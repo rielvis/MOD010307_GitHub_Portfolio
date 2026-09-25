@@ -78,12 +78,12 @@
 
 
 # --------------------------------------------
-# TextMeshPro generated files
+# TextMeshPro import area (ignore all file types)
 # --------------------------------------------
 
-**/[Tt]extMesh Pro/
+**/[Tt]extMesh Pro/**
 **/[Tt]extMesh Pro.meta
-**/[Tt]extMeshPro/
+**/[Tt]extMeshPro/**
 **/[Tt]extMeshPro.meta
 
 
