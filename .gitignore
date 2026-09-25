@@ -78,6 +78,16 @@
 
 
 # --------------------------------------------
+# TextMeshPro generated files
+# --------------------------------------------
+
+**/[Tt]extMesh Pro/
+**/[Tt]extMesh Pro.meta
+**/[Tt]extMeshPro/
+**/[Tt]extMeshPro.meta
+
+
+# --------------------------------------------
 # Crash reports and debug output
 # --------------------------------------------
 
