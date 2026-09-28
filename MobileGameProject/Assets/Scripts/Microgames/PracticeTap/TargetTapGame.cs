@@ -15,7 +15,6 @@ namespace MicrogameCourse.Microgames
         [SerializeField] private Image targetImage;
         [SerializeField] private Text progressText;
         [SerializeField] private Text feedbackText;
-        [SerializeField, Min(1)] private int tapsToWin = 5;
 
         [Header("Rules")]
 
