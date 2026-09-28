@@ -78,6 +78,17 @@
 **/Assets/TextMesh Pro/
 **/Assets/TextMesh Pro.meta
 
+# --------------------------------------------
+# TextMeshPro generated files (re-import TMP Essentials on each new computer)
+# --------------------------------------------
+
+**/TextMesh Pro/
+**/TextMesh Pro.meta
+**/TextMeshPro/
+**/*.tmp
+**/*TextMeshPro*.asset
+**/*TextMeshPro*.prefab
+
 
 # --------------------------------------------
 # Crash reports and debug output
