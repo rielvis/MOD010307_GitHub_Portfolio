@@ -4,25 +4,45 @@ using UnityEngine.UI;
 
 namespace MicrogameCourse.Microgames
 {
+    // Week 2 practice microgame: tap the shrinking target quickly to score points.
     public sealed class TargetTapGame : MicrogameBehaviour
     {
         // Section 2: Fields
+        [Header("Scene Preferences")]
+
         [SerializeField] private RectTransform playArea;
         [SerializeField] private RectTransform target;
+        [SerializeField] private Image targetImage;
         [SerializeField] private Text progressText;
+        [SerializeField] private Text feedbackText;
         [SerializeField, Min(1)] private int tapsToWin = 5;
-        [SerializeField] private float startSize = 240f;
-        [SerializeField] private float minimumSize = 100f;
-        [SerializeField] private float shrinkPerSecond = 80f;
 
-        private int tapsRemaining;
+        [Header("Rules")]
+
+        [Tooltip("Points needed to win before the timer runs out.")]
+        [SerializeField, Min(1)] private int scoreToWin = 10;
+
+        [Header("Shrinking target")]
+
+        [SerializeField, Min(10f)] private float startSize = 240f;
+        [SerializeField, Min(10f)] private float minimumSize = 100f;
+
+        [Tooltip("How many pixels the target loses from its width and height every second.")]
+        [SerializeField, Range(0f, 300f)] private float shrinkPerSecond = 80f;
+        [Header("Presentation")]
+        [SerializeField] private Color safeColour = new Color(0.20f, 0.80f, 0.40f);
+        [SerializeField] private bool showReactionTime = true;
+        private int score;
+        private float reactionTimer;
         private float currentSize;
 
         // Section 3: Starting a Run
         public override void Begin(MicrogameSession session)
         {
             base.Begin(session);
-            tapsRemaining = tapsToWin;
+            score = 0;
+            targetImage.color = safeColour;
+            feedbackText.text = "Go!";
             UpdateProgress();
             MoveTarget();
         }
@@ -30,10 +50,16 @@ namespace MicrogameCourse.Microgames
         private void Update()
         {
             if (!IsRunning) return;
+
+            reactionTimer += Time.deltaTime;
             currentSize -= shrinkPerSecond * Time.deltaTime;
             target.sizeDelta = new Vector2(currentSize, currentSize);
+
             if (currentSize <= minimumSize)
-                MoveTarget();        
+            {
+                feedbackText.text = "Too slow!";
+                MoveTarget();
+            }        
         }
 
         // Section 4: Handling a Tap
@@ -41,30 +67,32 @@ namespace MicrogameCourse.Microgames
         {
             if (!IsRunning) return;
 
-            tapsRemaining--;
+            score = score + 1;
             UpdateProgress();
 
-            if (tapsRemaining == 0)
-            {
-                Win();
-            }
-            else
-            {
+            if (showReactionTime) 
+                feedbackText.text = $"Hit! {reactionTimer:0.00}s";
+            else 
+                feedbackText.text = "Hit!";
+
+            if (score >= scoreToWin) 
+                Win();             
+            else 
                 MoveTarget();
-            }
         }
         
         // Section 5: Helper Methods
         private void UpdateProgress()
         {
-            progressText.text = $"Taps left: {tapsRemaining}";
+            progressText.text = $"Score: {score} / {scoreToWin}";
         }
 
         private void MoveTarget()
         {
             currentSize = startSize;
             target.sizeDelta = new Vector2(currentSize, currentSize);
-            
+            reactionTimer = 0f;
+
             float maxX = (playArea.rect.width - target.rect.width) * 0.5f;
             float maxY = (playArea.rect.height - target.rect.height) * 0.5f;
             float x = Random.Range(-maxX, maxX);
