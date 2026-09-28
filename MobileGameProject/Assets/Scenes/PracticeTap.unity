@@ -1507,10 +1507,15 @@ MonoBehaviour:
   progressText: {fileID: 1346798730}
   feedbackText: {fileID: 426679657}
   scoreToWin: 10
+  decoyChance: 0.25
+  decoyPenalty: 2
+  perfectTime: 0.5
+  greatTime: 1
   startSize: 240
   minimumSize: 100
   shrinkPerSecond: 80
   safeColour: {r: 0.2, g: 0.8, b: 0.4, a: 1}
+  decoyColour: {r: 0.9, g: 0.2, b: 0.2, a: 1}
   showReactionTime: 1
 --- !u!1 &919371682
 GameObject:
@@ -1651,7 +1656,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 42
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 42
@@ -1661,7 +1666,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap the target quickly before it shrinks away. Score 10 points to win.
+  m_Text: Tap GREEN targets fast for bonus points. Do NOT tap RED decoys! Score 10
+    points to win.
 --- !u!222 &1189750306
 CanvasRenderer:
   m_ObjectHideFlags: 0
