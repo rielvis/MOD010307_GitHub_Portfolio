@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         pRigidbody.linearVelocity = new UnityEngine.Vector2(pLinearVelocityX, pLinearVelocityY);
+            // Is there a way to signal when a collision happens, so this is only running when it needs to happen?
     }
 
     private void RandomisePlayerVelocity()
