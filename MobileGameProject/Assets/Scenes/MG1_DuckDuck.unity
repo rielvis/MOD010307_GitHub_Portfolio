@@ -412,7 +412,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &692262552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +425,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784e737724ea5846990556d055de4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  rb: {fileID: 0}
+  pRigidbody: {fileID: 0}
+  maximumPlayerSpeed: 0
+  pLinearVelocityX: 0
+  pLinearVelocityY: 0
 --- !u!212 &692262553
 SpriteRenderer:
   serializedVersion: 2
