@@ -34,13 +34,12 @@ public class PlayerController : MonoBehaviour
         playerDartForce = 1;
 
         RandomisePlayerVelocity();
-        pRigidbody.linearVelocity = new UnityEngine.Vector2(pLinearVelocityX, pLinearVelocityY);
+        SetPlayerSpeed();
     }
 
     void Update()
     {
-        pRigidbody.linearVelocity = new UnityEngine.Vector2(pLinearVelocityX, pLinearVelocityY);
-            // Is there a way to signal when a collision happens, so this is only running when it needs to happen?
+        SetPlayerSpeed();
         DartPlayer();
     }
 
@@ -55,12 +54,19 @@ public class PlayerController : MonoBehaviour
             // This sets a random direction for the player to start moving in.
     }
 
-    private void DartPlayer()
+    private void SetPlayerSpeed()
+    {
+        pRigidbody.linearVelocity = new UnityEngine.Vector2(pLinearVelocityX, pLinearVelocityY);
+            // Is there a way to signal when a collision happens, so this is only running when it needs to happen, and not every single frame?
+
+    }
+
+    private void DartPlayer() // Should refactor this, comparatives with negatives and positives are difficult to comprehend...
     {
         if (dartUp.WasPressedThisFrame())
         {
             if (pRigidbody.linearVelocityY < 0) pLinearVelocityY = +playerDartForce;
-            else
+            else if (pRigidbody.linearVelocityY <= +maximumPlayerSpeed)
             {
                 pLinearVelocityY += playerDartForce;
             }
@@ -69,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if (dartDown.WasPressedThisFrame())
         {
             if (pRigidbody.linearVelocityY > 0) pLinearVelocityY = -playerDartForce;
-            else
+            else if (pRigidbody.linearVelocityY >= -maximumPlayerSpeed)
             {
                 pLinearVelocityY -= playerDartForce;
             }
@@ -77,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if (dartLeft.WasPressedThisFrame())
         {
             if (pRigidbody.linearVelocityX > 0) pLinearVelocityX = -playerDartForce;
-            else
+            else if (pRigidbody.linearVelocityX >= -maximumPlayerSpeed)
             {
                 pLinearVelocityX -= playerDartForce;
             }
@@ -85,13 +91,11 @@ public class PlayerController : MonoBehaviour
         if (dartRight.WasPressedThisFrame())
         {
             if (pRigidbody.linearVelocityX < 0) pLinearVelocityX = +playerDartForce;
-            else
+            else if (pRigidbody.linearVelocityX <= +maximumPlayerSpeed)
             {
                 pLinearVelocityX += playerDartForce;
             }
         }
-
-            // No way of limiting speed here yet... can go on infinitely...
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
