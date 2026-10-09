@@ -1037,10 +1037,21 @@
                 {
                     "name": "",
                     "id": "93a6111e-c3d9-429d-8860-e4d6055043df",
-                    "path": "",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "567823db-017b-4c4f-bfff-e8448fe60480",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1048,10 +1059,21 @@
                 {
                     "name": "",
                     "id": "e7e18912-fc79-4393-a0b9-6315f74c64fc",
-                    "path": "",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81f36c65-2c04-4f6f-b00e-1f99d3adc84b",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1059,10 +1081,21 @@
                 {
                     "name": "",
                     "id": "5c03e6a1-35a1-443e-814d-1c98c193c397",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ca96f4d-3b18-427b-9fa2-e9805570cda3",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1070,10 +1103,21 @@
                 {
                     "name": "",
                     "id": "3e68ad9b-9113-4272-8661-ad5d09155076",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83335dc0-9148-4190-838c-0116eae0c434",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
