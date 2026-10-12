@@ -9,11 +9,15 @@ public class HunterController : MonoBehaviour
     [SerializeField] private float playAreaLimit;
     [SerializeField] private float sizeLimit;
 
+    private float shotTimer;
+    private float shotTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Set a random position within the play area.
         SetRandomPosition();
+        SetRandomSize();
 
         // Begin a countdown to the "shot".
     }
@@ -38,12 +42,8 @@ public class HunterController : MonoBehaviour
     {
         sizeLimit = 1;
 
-        float scaleX = Random.Range(0.5f, sizeLimit);
-        float scaleY = Random.Range(0.5f, sizeLimit);
-        float scaleZ = Random.Range(0.5f, sizeLimit);
+        float scaleV = Random.Range(0.5f, sizeLimit);
 
-        // transform.scale = new Vector3(scaleX, scaleY, scaleZ);
-
-        return;
+        transform.localScale = new Vector3(scaleV, scaleV, scaleV);
     }
 }
