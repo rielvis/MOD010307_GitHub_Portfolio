@@ -8,20 +8,22 @@ public class HunterController : MonoBehaviour
 {
     [SerializeField] private float playAreaLimit;
     [SerializeField] private float sizeLimit;
-
+    [SerializeField, Min(3)] private float shotTime;
     private float shotTimer;
+
+    public GameObject gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // assign gameManager object to GameObject variable
+
         // Begin a countdown to the "shot".
-        SetTimer(11);
+        SetTimer(shotTime);
 
         // Set a random position within the play area.
+        SetRandomSize(10);
         SetRandomPosition();
-        SetRandomSize();
-
-
     }
 
     // Update is called once per frame
@@ -40,9 +42,9 @@ public class HunterController : MonoBehaviour
         transform.position = new Vector3(posX, posY, 0f);
     }
 
-    private void SetRandomSize()
+    private void SetRandomSize(float size)
     {
-        sizeLimit = 1;
+        sizeLimit = size;
 
         float scaleV = Random.Range(0.5f, sizeLimit);
 
@@ -56,15 +58,21 @@ public class HunterController : MonoBehaviour
 
     private void RunTimer()
     {
-        if (shotTimer >= 1f)
+        if ((int)shotTimer >= 1)
         {  
             shotTimer -= Time.deltaTime;
             Debug.Log($"Time Remaining: {(int)shotTimer}");
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D area)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         // If the player is in the trigger area during the "shot", the game is over.
+        // The shot happens when the shot timer reaches 0.
+        if ((int)shotTimer <= 0 && collision.gameObject.name == "Player")
+        {
+            // set game over in gameManager
+            Debug.Log("Player is hit!");
+        }
     }
 }

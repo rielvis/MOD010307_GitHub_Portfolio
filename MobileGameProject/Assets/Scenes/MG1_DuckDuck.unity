@@ -1202,6 +1202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 4494797723957284408, guid: b366a83db65b20647a5a04a2687fd96c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9058392997638995580, guid: b366a83db65b20647a5a04a2687fd96c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
