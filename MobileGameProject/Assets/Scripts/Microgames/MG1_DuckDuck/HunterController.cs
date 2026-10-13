@@ -10,6 +10,7 @@ public class HunterController : MonoBehaviour
     [SerializeField] private float sizeLimit;
     [SerializeField, Min(3)] private float shotTime;
     private float shotTimer;
+    private bool isPlayerSeen = false;
 
     public GameObject gameManager;
 
@@ -19,10 +20,11 @@ public class HunterController : MonoBehaviour
         // assign gameManager object to GameObject variable
 
         // Begin a countdown to the "shot".
+        shotTime = 5;
         SetTimer(shotTime);
 
         // Set a random position within the play area.
-        SetRandomSize(10);
+        SetRandomSize(3);
         SetRandomPosition();
     }
 
@@ -62,17 +64,44 @@ public class HunterController : MonoBehaviour
         {  
             shotTimer -= Time.deltaTime;
             Debug.Log($"Time Remaining: {(int)shotTimer}");
+
+        }
+        else if ((int)shotTimer <= 0)
+        {
+            Shoot();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Shoot()
     {
-        // If the player is in the trigger area during the "shot", the game is over.
-        // The shot happens when the shot timer reaches 0.
-        if ((int)shotTimer <= 0 && collision.gameObject.name == "Player")
+        if (isPlayerSeen)
         {
-            // set game over in gameManager
-            Debug.Log("Player is hit!");
+            Debug.Log("Player was hit!");
+            gameObject.SetActive(false);
+        }
+        else if (!isPlayerSeen)
+        {
+            Debug.Log("Player was not hit!");
+            gameObject.SetActive(false);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) // Unity calls this function on a trigger collider once per frame if it detects another Collider inside the trigger collider.
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            isPlayerSeen = true;
+            Debug.Log("Player found!");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            isPlayerSeen = false;
+            Debug.Log("Player lost!");
         }
     }
 }
