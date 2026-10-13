@@ -11,6 +11,7 @@ public class HunterController : MonoBehaviour
     [SerializeField, Min(3)] private float shotTime;
     private float shotTimer;
     private bool isPlayerSeen = false;
+    private bool isPlayerHit;
 
     public GameObject gameManager;
 
@@ -77,11 +78,13 @@ public class HunterController : MonoBehaviour
         if (isPlayerSeen)
         {
             Debug.Log("Player was hit!");
+            isPlayerHit = true;
             gameObject.SetActive(false);
         }
         else if (!isPlayerSeen)
         {
             Debug.Log("Player was not hit!");
+            isPlayerHit = false;
             gameObject.SetActive(false);
         }
 
@@ -98,7 +101,7 @@ public class HunterController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" && isPlayerHit == false)
         {
             isPlayerSeen = false;
             Debug.Log("Player lost!");
