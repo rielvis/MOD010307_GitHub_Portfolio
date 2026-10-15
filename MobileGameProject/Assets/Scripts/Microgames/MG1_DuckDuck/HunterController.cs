@@ -12,6 +12,7 @@ public class HunterController : MonoBehaviour
     private float shotTimer;
     private bool isPlayerSeen = false;
     private bool isPlayerHit;
+    [SerializeField] private bool debugTimer = false;
 
     public GameObject gameManager;
 
@@ -64,7 +65,11 @@ public class HunterController : MonoBehaviour
         if ((int)shotTimer >= 1)
         {  
             shotTimer -= Time.deltaTime;
-            Debug.Log($"Time Remaining: {(int)shotTimer}");
+            if (debugTimer)
+            {
+                Debug.Log($"Time Remaining: {(int)shotTimer}");                
+            }
+
 
         }
         else if ((int)shotTimer <= 0)
