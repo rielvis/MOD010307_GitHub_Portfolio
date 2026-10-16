@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 // There will be multiple "Hunter" objects that spawn in this scene. They are target areas that off-screen hunters are aiming at.
@@ -6,28 +7,30 @@ using UnityEngine;
 
 public class HunterController : MonoBehaviour
 {
-    [SerializeField] private float playAreaLimit;
-    [SerializeField] private float sizeLimit;
-    [SerializeField, Min(3)] private float shotTime;
-    private float shotTimer;
+    [Header("Player Variables")]
     private bool isPlayerSeen = false;
     private bool isPlayerHit;
+
+    [Header("Timer")]
+    [SerializeField, Min(3)] private float shotTime;
+    private float shotTimer;
     [SerializeField] private bool debugTimer = false;
+
+    [Header("Other")]
+    [SerializeField] private float sizeLimit;
 
     public GameObject gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // assign gameManager object to GameObject variable
-
         // Begin a countdown to the "shot".
         shotTime = 5;
         SetTimer(shotTime);
 
         // Set a random position within the play area.
-        SetRandomSize(3);
-        SetRandomPosition();
+        SetRandomSize(1, 3);
+        // SetTargetPosition();
     }
 
     // Update is called once per frame
@@ -36,21 +39,9 @@ public class HunterController : MonoBehaviour
         RunTimer();
     }
 
-    private void SetRandomPosition()
+    private void SetRandomSize(float minSize, float maxSize)
     {
-        playAreaLimit = 2f;
-
-        float posX = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
-        float posY = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
-
-        transform.position = new Vector3(posX, posY, 0f);
-    }
-
-    private void SetRandomSize(float size)
-    {
-        sizeLimit = size;
-
-        float scaleV = Random.Range(0.5f, sizeLimit);
+        float scaleV = Random.Range(minSize, maxSize);
 
         transform.localScale = new Vector3(scaleV, scaleV, scaleV);
     }
