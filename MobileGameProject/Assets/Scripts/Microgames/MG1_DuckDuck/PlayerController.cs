@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public GameController gameManager;
+
     [SerializeField] private Rigidbody2D pRigidbody;
 
     [Header("Player Input")]
@@ -12,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private InputAction dartDown;
     private InputAction dartLeft;
     private InputAction dartRight;
+    private InputAction hunterSpawn;
 
     [Header("Player Speed & Velocity")]
     [SerializeField] private int maximumPlayerSpeed;
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
         dartDown = InputSystem.actions.FindAction("Down");
         dartLeft = InputSystem.actions.FindAction("Left");
         dartRight = InputSystem.actions.FindAction("Right");
+        hunterSpawn = InputSystem.actions.FindAction("Spawn");
     }
 
     void Start()
@@ -41,6 +45,11 @@ public class PlayerController : MonoBehaviour
     {
         SetPlayerSpeed();
         DartPlayer();
+
+        if (hunterSpawn.WasPressedThisFrame())
+        {
+            gameManager.SpawnHunter();
+        }
     }
 
     private void RandomisePlayerVelocity()
