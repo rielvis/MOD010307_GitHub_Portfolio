@@ -30,27 +30,19 @@ public class GameController : MicrogameBehaviour
     }
 
 
-    private void SpawnHunter() // Run this however often your spawn rate is.
+    public void SpawnHunter() // Run this however often your spawn rate is.
     {
-        // Vector3 targetPosition;
-        // float randPosX;
-        // float randPosY;
-
-        // if (Random.Range(0,2) == 0)
-        //     targetPosition = playerTransform.position;
-        // else if (Random.Range(0,2) == 1)
-        //     targetPosition = new Vector3(randPosX, randPosY, 0f);
-
-        // Instantiate(hunterPrefab, targetPosition, Quaternion.identity);
+        // Instantiate(hunterPrefab, SetHunterRandomPosition(), Quaternion.identity);
+        Instantiate(hunterPrefab, new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0), Quaternion.identity);
     }
 
-    private void SetHunterRandomPosition()
-    {
-        playAreaLimit = 2f;
+    // private Vector3 SetHunterRandomPosition(Vector3 transformPosition)
+    // {
+    //     playAreaLimit = 2f;
 
-        float posX = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
-        float posY = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
+    //     float posX = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
+    //     float posY = Random.Range(0, playAreaLimit) * (Random.Range(0, 2) == 0 ? -1 : 1);
 
-        transform.position = new Vector3(posX, posY, 0f);
-    }
+    //     transformPosition = new Vector3(posX, posY, 0f);
+    // }
 }
