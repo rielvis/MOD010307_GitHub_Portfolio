@@ -8,8 +8,6 @@ namespace MicrogameCourse.Microgames
     {
         [SerializeField] public GameController gameManager;
 
-        [SerializeField] private Rigidbody2D pRigidbody;
-
         [Header("Player Input")]
         [SerializeField] public InputActionAsset InputActions;
         private InputAction dartUp;
@@ -18,7 +16,8 @@ namespace MicrogameCourse.Microgames
         private InputAction dartRight;
         private InputAction hunterSpawn;
 
-        [Header("Player Speed & Velocity")]
+        [Header("Player Physics, Speed, and Velocity")]
+        [SerializeField] private Rigidbody2D pRigidbody;
         [SerializeField] private int maximumPlayerSpeed;
         [SerializeField] private float pLinearVelocityX;
         [SerializeField] private float pLinearVelocityY;
@@ -60,15 +59,11 @@ namespace MicrogameCourse.Microgames
 
             pLinearVelocityX = Random.Range(1, maximumPlayerSpeed + 1) * (Random.Range(0, 2) == 0 ? -1 : 1);
             pLinearVelocityY = Random.Range(1, maximumPlayerSpeed + 1) * (Random.Range(0, 2) == 0 ? -1 : 1);
-            // Random.Range(1, 4) returns an integer between 1 and the max set speed.
-            // R.R(0, 2) produces either 0 or 1, ternery then makes the speed negative or positive.
-            // This sets a random direction for the player to start moving in.
         }
 
         private void SetPlayerSpeed()
         {
             pRigidbody.linearVelocity = new UnityEngine.Vector2(pLinearVelocityX, pLinearVelocityY);
-            // Is there a way to signal when a collision happens, so this is only running when it needs to happen, and not every single frame?
 
         }
 

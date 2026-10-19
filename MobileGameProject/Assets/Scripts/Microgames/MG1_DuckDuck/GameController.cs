@@ -12,21 +12,18 @@ namespace MicrogameCourse.Microgames
         /// </summary>
         [SerializeField] public GameObject hunterPrefab;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (!IsRunning) return;
         }
 
-        public void SpawnHunter() // Run this however often your spawn rate is.
+        public void SpawnHunter()
         {
-            // Instantiate(hunterPrefab, SetHunterRandomPosition(), Quaternion.identity);
             Instantiate(hunterPrefab, new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0), Quaternion.identity);
         }
     }

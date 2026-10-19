@@ -14,7 +14,6 @@ public class HunterController : MonoBehaviour
     [Header("Timer")]
     [SerializeField, Min(3)] private float shotTime;
     private float shotTimer;
-    [SerializeField] private bool debugTimer = false;
 
     [Header("Other")]
     [SerializeField] private float sizeLimit;
@@ -22,7 +21,6 @@ public class HunterController : MonoBehaviour
     public GameObject gameManager;
     private GameObject player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Begin a countdown to the "shot".
@@ -31,10 +29,8 @@ public class HunterController : MonoBehaviour
 
         // Set a random position within the play area.
         SetRandomSize(1, 3);
-        // SetTargetPosition();
     }
 
-    // Update is called once per frame
     void Update()
     {
         RunTimer();
@@ -60,15 +56,8 @@ public class HunterController : MonoBehaviour
     private void RunTimer()
     {
         if ((int)shotTimer >= 1)
-        {  
+        {
             shotTimer -= Time.deltaTime;
-            if (debugTimer)
-            {
-                //Debug.Log($"Time Remaining: {(int)shotTimer}");
-                return;                
-            }
-
-
         }
         else if ((int)shotTimer <= 0)
         {
@@ -93,7 +82,7 @@ public class HunterController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // Unity calls this function on a trigger collider once per frame if it detects another Collider inside the trigger collider.
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
