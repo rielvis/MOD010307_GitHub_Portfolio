@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784e737724ea5846990556d055de4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  gameManager: {fileID: 921543600}
   pRigidbody: {fileID: 0}
   InputActions: {fileID: 0}
   maximumPlayerSpeed: 0
@@ -904,7 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   playerTransform: {fileID: 0}
   playAreaLimit: 1.5
-  hunterPrefab: {fileID: 0}
+  hunterPrefab: {fileID: 3755713017392008553, guid: b366a83db65b20647a5a04a2687fd96c, type: 3}
   spawnRate: 0
 --- !u!1 &1528634655
 GameObject:
