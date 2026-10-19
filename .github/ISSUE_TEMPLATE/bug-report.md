@@ -3,12 +3,13 @@ name: Bug Report
 about: Report a bug in code/user space
 title: ''
 labels: ''
-assignees: ''
+assignees: rielvis
+type: Bug
 
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+- A clear and concise description of what the bug is.
 
 **To reproduce...**
 Steps to reproduce the behavior:
@@ -33,4 +34,4 @@ If applicable, add screenshots to help explain your problem.
  - Version [e.g. 22]
 
 **Additional context**
-Add any other context about the problem here.
+- Add any other context about the problem here.
