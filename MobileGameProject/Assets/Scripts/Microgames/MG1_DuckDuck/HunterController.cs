@@ -58,7 +58,8 @@ public class HunterController : MonoBehaviour
             shotTimer -= Time.deltaTime;
             if (debugTimer)
             {
-                Debug.Log($"Time Remaining: {(int)shotTimer}");                
+                //Debug.Log($"Time Remaining: {(int)shotTimer}");
+                return;                
             }
 
 
@@ -79,7 +80,7 @@ public class HunterController : MonoBehaviour
         }
         else if (!isPlayerSeen)
         {
-            Debug.Log("Player was not hit!");
+            //Debug.Log("Player was not hit!");
             isPlayerHit = false;
             gameObject.SetActive(false);
         }
@@ -91,7 +92,7 @@ public class HunterController : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             isPlayerSeen = true;
-            Debug.Log("Player found!");
+            //Debug.Log("Player found!");
         }
     }
 
@@ -100,7 +101,7 @@ public class HunterController : MonoBehaviour
         if (collision.gameObject.name == "Player" && isPlayerHit == false)
         {
             isPlayerSeen = false;
-            Debug.Log("Player lost!");
+            //Debug.Log("Player lost!");
         }
     }
 }
