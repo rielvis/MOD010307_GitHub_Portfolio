@@ -20,6 +20,7 @@ public class HunterController : MonoBehaviour
     [SerializeField] private float sizeLimit;
 
     public GameObject gameManager;
+    private GameObject player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,11 @@ public class HunterController : MonoBehaviour
     void Update()
     {
         RunTimer();
+
+        if (isPlayerHit)
+        {
+            player.SetActive(false);
+        }
     }
 
     private void SetRandomSize(float minSize, float maxSize)
@@ -91,6 +97,7 @@ public class HunterController : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            player = collision.gameObject;
             isPlayerSeen = true;
             //Debug.Log("Player found!");
         }
