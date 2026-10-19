@@ -2,7 +2,7 @@
 name: Bug Report
 about: Report a bug in code/user space
 title: ''
-labels: ''
+labels: Bug
 assignees: rielvis
 type: Bug
 

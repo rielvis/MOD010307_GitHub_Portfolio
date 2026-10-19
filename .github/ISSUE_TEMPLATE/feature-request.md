@@ -2,7 +2,7 @@
 name: Feature Request
 about: Request a feature in code/user space
 title: ''
-labels: ''
+labels: Feature
 assignees: rielvis
 type: Feature
 

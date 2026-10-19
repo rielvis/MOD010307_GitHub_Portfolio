@@ -2,7 +2,7 @@
 name: Dev Issue
 about: Developer-reported issues to resolve
 title: ''
-labels: ''
+labels: Task
 assignees: rielvis
 type: Task
 
