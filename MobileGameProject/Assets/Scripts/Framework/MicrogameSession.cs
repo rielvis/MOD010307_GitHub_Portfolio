@@ -7,12 +7,12 @@ namespace MicrogameCourse.Framework
     {
         private enum Phase {Ready, Playing, Result}
         
-        [SerializeField] private MicrogameBehaviour game;
-        [SerializeField] private GameObject readyPanel;
+        [SerializeField] private MicrogameBehaviour game; // the "game manager"
+        [SerializeField] private GameObject readyPanel; // UI (Canvas) > Image
         [SerializeField] private GameObject playArea;
-        [SerializeField] private GameObject resultPanel;
-        [SerializeField] private Text timerText;
-        [SerializeField] private Text resultText;
+        [SerializeField] private GameObject resultPanel; // UI (Canvas) > Image
+        [SerializeField] private Text timerText; // TMP
+        [SerializeField] private Text resultText; // TMP
         [SerializeField, Min(1f)] private float durationSeconds = 10f;
 
         private Phase currentPhase;
