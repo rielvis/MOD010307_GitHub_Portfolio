@@ -36,49 +36,25 @@ The repository history, branches and pull requests form part of the assessment e
 
 ---
 
-## Creating the Unity Project
-
-After cloning this repository:
-
-1. Open Unity Hub.
-2. Create a new Unity 6 project.
-3. Set the project name to `MobileGameProject`.
-4. Set the project location to the root folder of this repository.
-5. Unity should create the folder:
-
-   `MobileGameProject/`
-
-6. Confirm that the Unity project contains:
-
-   - `MobileGameProject/Assets/`
-   - `MobileGameProject/Packages/`
-   - `MobileGameProject/ProjectSettings/`
-
-7. Open the project in Unity and confirm that it runs correctly.
-8. Commit the newly created Unity project files to the repository.
-9. Delete this **Creating the Unity Project** section from the README once setup is complete.
-
-> The Unity project may use a different suitable name if preferred. It should be created directly within the root of this repository rather than inside an additional manually-created project folder.
-
----
-
 # Microgames
 
 ## 1. Movement and Control
 
-**Game title:**  
-**Location:** [Microgame documentation](Microgames/01-Movement-Control/README.md)
+**Game Title:** DuckDuck
+**Location:** [Documentation/Microgames/01-Movement-Control/README.md](Documentation/Microgames/01-Movement-Control/README.md)
 
-**Main technical focus:**  
+**Main Technical Focus:**  
 Player movement, navigation or aiming using input, vectors, delta time and game state.
 
 ### Primary student-authored scripts
 
-_Add links to the scripts presented as evidence for this microgame._
+[GameController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/GameController.cs)
+[HunterController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/HunterController.cs)
+[PlayerController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/PlayerController.cs)
 
 ### Key pull requests
 
-_Add links to pull requests showing the development and refinement of this microgame._
+[#8 - MG1: DuckDuck, initial implementation](https://github.com/rielvis/MOD010307_GitHub_Portfolio/pull/8)
 
 ---
 
