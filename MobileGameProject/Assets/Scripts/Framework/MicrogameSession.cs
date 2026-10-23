@@ -7,12 +7,13 @@ namespace MicrogameCourse.Framework
     {
         private enum Phase {Ready, Playing, Result}
         
-        [SerializeField] private MicrogameBehaviour game;
-        [SerializeField] private GameObject readyPanel;
+        [SerializeField] private MicrogameBehaviour game; // the "game manager"
+        [SerializeField] private GameObject readyPanel; // UI (Canvas) > Image
         [SerializeField] private GameObject playArea;
-        [SerializeField] private GameObject resultPanel;
-        [SerializeField] private Text timerText;
-        [SerializeField] private Text resultText;
+        [SerializeField] private GameObject resultPanel; // UI (Canvas) > Image
+        [SerializeField] private GameObject player;
+        [SerializeField] private Text timerText; // TMP
+        [SerializeField] private Text resultText; // TMP
         [SerializeField, Min(1f)] private float durationSeconds = 10f;
 
         private Phase currentPhase;
@@ -24,6 +25,7 @@ namespace MicrogameCourse.Framework
             readyPanel.SetActive(true);
             playArea.SetActive(false);
             resultPanel.SetActive(false);
+            player.SetActive(false);
             timerText.text = string.Empty;
         }
 
@@ -35,6 +37,7 @@ namespace MicrogameCourse.Framework
             readyPanel.SetActive(false);
             playArea.SetActive(true);
             resultPanel.SetActive(false);
+            player.SetActive(true);
             currentPhase = Phase.Playing;
             ShowTime();
             game.Begin(this);
@@ -57,6 +60,7 @@ namespace MicrogameCourse.Framework
             game.End();
             playArea.SetActive(false);
             resultPanel.SetActive(true);
+            player.SetActive(false);
             resultText.text = won ? "You win!" : "Time is up!"; // Ternery statement
         }
 

@@ -2,12 +2,17 @@
 
 ## Microgame Programming Portfolio
 
-**Student ID:**  
-**Module:** MOD010307 Mobile Game Programming  
-**Engine / Version:**  
-**Programming Language:**  
-**Final Release / Tag:**  
-**Final Commit:**  
+**Student ID:** 2500162
+
+**Module:** MOD010307 Mobile Game Programming
+
+**Engine / Version:** Unity 6000.3.17f1
+
+**Programming Language:** C#
+
+**Final Release / Tag:**
+
+**Final Commit:** 
 
 ---
 
