@@ -12,9 +12,9 @@ namespace MicrogameCourse.Microgames
         /// </summary>
         [SerializeField] public GameObject hunterPrefab;
 
-        void Start()
+        public override void Begin(MicrogameSession session)
         {
-            
+            base.Begin(session);
         }
 
         void Update()

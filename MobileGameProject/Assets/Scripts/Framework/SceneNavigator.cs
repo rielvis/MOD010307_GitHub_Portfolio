@@ -7,11 +7,17 @@ namespace MicrogameCourse.Framework
     {
         private const string MenuScene = "MainMenu";
         private const string PracticeScene = "PracticeTap";
+        private const string MG1 = "MG1_DuckDuck";
         private bool isLoading;
 
         public void OpenPractice()
         {
             Load(PracticeScene);
+        }
+
+        public void OpenMG1()
+        {
+            Load(MG1);
         }
 
         public void OpenMenu()
