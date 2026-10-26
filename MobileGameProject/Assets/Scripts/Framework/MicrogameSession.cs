@@ -8,8 +8,10 @@ namespace MicrogameCourse.Framework
         private enum Phase {Ready, Playing, Result}
         
         [SerializeField] private MicrogameBehaviour game;
+        [SerializeField] private GameObject header;
         [SerializeField] private GameObject readyPanel;
         [SerializeField] private GameObject playArea;
+        [SerializeField] private GameObject playUI;
         [SerializeField] private GameObject resultPanel;
         [SerializeField] private Text resultText;
         
@@ -23,6 +25,7 @@ namespace MicrogameCourse.Framework
             currentPhase = Phase.Ready;
             readyPanel.SetActive(true);
             playArea.SetActive(false);
+            playUI.SetActive(false);
             resultPanel.SetActive(false);
 
         }
@@ -30,10 +33,9 @@ namespace MicrogameCourse.Framework
         public virtual void StartGame()
         {
             if (currentPhase != Phase.Ready || game == null) return;
-
-            
             readyPanel.SetActive(false);
             playArea.SetActive(true);
+            playUI.SetActive(true);
             resultPanel.SetActive(false);
             currentPhase = Phase.Playing;
             game.Begin(this);
@@ -51,6 +53,7 @@ namespace MicrogameCourse.Framework
             currentPhase = Phase.Result;
             game.End();
             playArea.SetActive(false);
+            playUI.SetActive(false);
             resultPanel.SetActive(true);
             resultText.text = won ? "You win!" : "Game over!"; // Ternery statement
         }
