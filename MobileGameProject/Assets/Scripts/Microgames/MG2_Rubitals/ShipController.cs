@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Vector2 launchVector;
     [SerializeField] public MG2Session MicrogameSession;
     
     void Awake()
@@ -26,12 +27,12 @@ public class ShipController : MonoBehaviour
 
     private void SetRandomRotation()
     {
-        // transform.rotation = Quaternion.Euler(0, 0, RandomRange(0, 46));
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-20, 20));
     }
 
     public void LaunchShip()
     {
-        rb.linearVelocityY = 3;
+        rb.linearVelocity = new Vector2(0, 3);
     }
 
     void OnTriggerEnter2D(Collider2D trigger)
