@@ -15,4 +15,10 @@ public class GravityController : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D trigger)
+    {
+        // pull the physics object in this trigger field towards the center
+        Debug.Log("Pulling on object!");
+    }
 }
