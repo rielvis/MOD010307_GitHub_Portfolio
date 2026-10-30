@@ -1,8 +1,11 @@
+using MicrogameCourse.Framework;
+using MicrogameCourse.Microgames;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] public MG2Session MicrogameSession;
     
     void Awake()
     {
@@ -29,5 +32,18 @@ public class ShipController : MonoBehaviour
     public void LaunchShip()
     {
         rb.linearVelocityY = 3;
+    }
+
+    void OnTriggerEnter2D(Collider2D trigger)
+    {
+        if (trigger.name == "Destination")
+        {
+            MicrogameSession.Finish(true);
+        }
+
+        if (trigger.name == "GravityField")
+        {
+            Debug.Log("Ship in gravity field!");
+        }
     }
 }
