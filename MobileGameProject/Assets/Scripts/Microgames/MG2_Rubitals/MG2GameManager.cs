@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MicrogameCourse.Microgames
 {
-    public class GameManager : MicrogameBehaviour
+    public class MG2GameManager : MicrogameBehaviour
     {
         
     }
