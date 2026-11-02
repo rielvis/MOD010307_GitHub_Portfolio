@@ -12,7 +12,7 @@ public class GravityController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gravityStrength = 9.8f;
+        gravityStrength = 2f;
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class GravityController : MonoBehaviour
     // Pull the physics object in this trigger field towards the center.
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Pulling on object!");
+        //Debug.Log("Pulling on object!");
 
         //GetObjectVector
         //objVector = transform.position - collider.transform.position;
@@ -38,8 +38,7 @@ public class GravityController : MonoBehaviour
 
         Debug.Log(objVector.normalized * (gravityStrength / distanceToCore));
         
-        collider.attachedRigidbody.AddForce(objVector.normalized * (gravityStrength / distanceToCore), ForceMode2D.Force);
-            // Something about this causing issue#12 ?
+        collider.attachedRigidbody.AddForce(objVector.normalized * (gravityStrength), ForceMode2D.Impulse);
 
     }
 }
