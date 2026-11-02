@@ -13,7 +13,6 @@ namespace MicrogameCourse.Framework
         [SerializeField] private GameObject playUI;
         [SerializeField] private GameObject resultPanel; // UI (Canvas) > Image
         [SerializeField] private GameObject player;
-        [SerializeField] private Text timerText; // TMP
         [SerializeField] private Text resultText; // TMP
         [SerializeField, Min(1f)] private float durationSeconds = 10f;
 
@@ -28,7 +27,6 @@ namespace MicrogameCourse.Framework
             playUI.SetActive(false);
             resultPanel.SetActive(false);
             player.SetActive(false);
-            timerText.text = string.Empty;
         }
 
         public virtual void StartGame()
