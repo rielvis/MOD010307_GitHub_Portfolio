@@ -24,20 +24,26 @@ public class ShipController : MonoBehaviour
     {
         // Randomise rotation within a certain range
         SetRandomRotation();
-        launchSpeed = 10;
+
+        // Initialise the launch vector
+        GetLaunchVector(); Debug.Log("Launch Vector: " + launchVector);
+        launchSpeed = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
-        FaceVelocity();
+        GetLaunchVector(); // Will update lV when changing it during play
     }
 
     private void SetRandomRotation()
     {
         transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-20, 20));
-        launchVector = new Vector2(nose.position.x - back.position.x, nose.position.y - back.position.y);
-        Debug.Log("Launch Vector: " + launchVector.normalized);
+    }
+
+    private void GetLaunchVector()
+    {
+        launchVector = new Vector2(nose.position.x - back.position.x, nose.position.y - back.position.y).normalized;
     }
 
     public void LaunchShip()
@@ -54,6 +60,7 @@ public class ShipController : MonoBehaviour
         float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg - 90f;
         Quaternion wanted = Quaternion.Euler(0f, 0f, angle);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, wanted, 540f * Time.deltaTime);
+            // This rotates the whole game object, which is also where the rigidbody is
     }
 
     void OnTriggerEnter2D(Collider2D trigger)
