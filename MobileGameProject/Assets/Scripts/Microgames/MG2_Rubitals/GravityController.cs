@@ -27,17 +27,19 @@ public class GravityController : MonoBehaviour
         Debug.Log("Pulling on object!");
 
         //GetObjectVector
-        objVector = transform.position - collider.transform.position;
+        //objVector = transform.position - collider.transform.position;
     }
 
     void OnTriggerStay2D(Collider2D collider)
     {
         objVector = transform.position - collider.transform.position;
         distanceToCore = (objVector.x + objVector.y) / 2;
+            // Need to fix this, incorrect according to Pythagoras
 
         Debug.Log(objVector.normalized * (gravityStrength / distanceToCore));
-        //collider.attachedRigidbody.AddForce(objVector.normalized * Mathf.Clamp(gravityStrength / distanceToCore, 0, 20), ForceMode2D.Force);
+        
         collider.attachedRigidbody.AddForce(objVector.normalized * (gravityStrength / distanceToCore), ForceMode2D.Force);
+            // Something about this causing issue#12 ?
 
     }
 }
