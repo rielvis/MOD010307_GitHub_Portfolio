@@ -3,7 +3,7 @@ using UnityEngine.UI; // why do we have to specify this
 
 namespace MicrogameCourse.Framework
 {
-    public sealed class MicrogameSession : MonoBehaviour
+    public class MicrogameSession : MonoBehaviour
     {
         private enum Phase {Ready, Playing, Result}
         
@@ -17,56 +17,48 @@ namespace MicrogameCourse.Framework
         [SerializeField, Min(1f)] private float durationSeconds = 10f;
 
         private Phase currentPhase;
-        private float remainingSeconds;
+        
 
-        private void Awake()
+        public virtual void Awake()
         {
             currentPhase = Phase.Ready;
             readyPanel.SetActive(true);
             playArea.SetActive(false);
+            playUI.SetActive(false);
             resultPanel.SetActive(false);
             player.SetActive(false);
             timerText.text = string.Empty;
         }
 
-        public void StartGame()
+        public virtual void StartGame()
         {
             if (currentPhase != Phase.Ready || game == null) return;
-
-            remainingSeconds = durationSeconds;
             readyPanel.SetActive(false);
             playArea.SetActive(true);
+            playUI.SetActive(true);
             resultPanel.SetActive(false);
             player.SetActive(true);
             currentPhase = Phase.Playing;
-            ShowTime();
             game.Begin(this);
         }
 
-        private void Update()
+        public virtual void Update()
         {
             if (currentPhase != Phase.Playing) return;
-
-            remainingSeconds = Mathf.Max(0f, remainingSeconds - Time.deltaTime);
-            ShowTime();
-            if (remainingSeconds <= 0) Finish(false);
         }
 
-        public void Finish(bool won)
+        public virtual void Finish(bool won)
         {
             if (currentPhase != Phase.Playing) return;
 
             currentPhase = Phase.Result;
             game.End();
             playArea.SetActive(false);
+            playUI.SetActive(false);
             resultPanel.SetActive(true);
             player.SetActive(false);
             resultText.text = won ? "You win!" : "Time is up!"; // Ternery statement
         }
 
-        private void ShowTime()
-        {
-            timerText.text = $"Time : {remainingSeconds:0.0}s";
-        }
     }
 }

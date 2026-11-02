@@ -680,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369610717}
-  - component: {fileID: 369610716}
+  - component: {fileID: 369610719}
   - component: {fileID: 369610718}
   m_Layer: 0
   m_Name: MicrogameSession
@@ -689,25 +689,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &369610716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369610715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c22b7c2044f60e429ec764a543cf6e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MicrogameCourse.Framework.MicrogameSession
-  game: {fileID: 903534034}
-  readyPanel: {fileID: 527876264}
-  playArea: {fileID: 14365649}
-  resultPanel: {fileID: 319318193}
-  timerText: {fileID: 1242733965}
-  resultText: {fileID: 326622273}
-  durationSeconds: 15
 --- !u!4 &369610717
 Transform:
   m_ObjectHideFlags: 0
@@ -735,6 +716,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4fe108b9574bd4aa3d9028c5d25cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MicrogameCourse.Learning.LifecycleProbe
+--- !u!114 &369610719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369610715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f690e14c0285a94c87305d7a59b3dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MicrogameCourse.Microgames.TargetTapSession
+  game: {fileID: 903534034}
+  readyPanel: {fileID: 527876264}
+  playArea: {fileID: 14365649}
+  resultPanel: {fileID: 319318193}
+  resultText: {fileID: 326622273}
+  durationSeconds: 10
+  timerText: {fileID: 1242733965}
 --- !u!1 &426679656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,8 +1111,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369610716}
-        m_TargetAssemblyTypeName: MicrogameCourse.Framework.MicrogameSession, Assembly-CSharp
+      - m_Target: {fileID: 369610719}
+        m_TargetAssemblyTypeName: MicrogameCourse.Microgames.TargetTapSession, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
