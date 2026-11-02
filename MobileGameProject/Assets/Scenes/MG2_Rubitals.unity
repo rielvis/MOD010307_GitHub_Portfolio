@@ -698,12 +698,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MicrogameCourse.Microgames.MG2Session
   game: {fileID: 503752122}
-  header: {fileID: 830147671}
   readyPanel: {fileID: 1069388943}
   playArea: {fileID: 802082635}
   playUI: {fileID: 373963883}
   resultPanel: {fileID: 1443177172}
+  player: {fileID: 1923578754}
   resultText: {fileID: 1145145564}
+  durationSeconds: 10
 --- !u!1 &802082635
 GameObject:
   m_ObjectHideFlags: 0
