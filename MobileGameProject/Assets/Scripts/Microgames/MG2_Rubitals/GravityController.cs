@@ -12,7 +12,7 @@ public class GravityController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gravityStrength = 2f;
+        gravityStrength = 1f;
     }
 
     // Update is called once per frame

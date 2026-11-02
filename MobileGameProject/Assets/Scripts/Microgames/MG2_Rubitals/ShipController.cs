@@ -75,4 +75,12 @@ public class ShipController : MonoBehaviour
             Debug.Log("Ship in gravity field!");
         }
     }
+
+    void OnTriggerExit2D(Collider2D area)
+    {
+        if (area.name == "Area")
+        {
+            MicrogameSession.Finish(false);
+        }
+    }
 }
