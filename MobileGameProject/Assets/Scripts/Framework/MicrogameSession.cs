@@ -10,6 +10,7 @@ namespace MicrogameCourse.Framework
         [SerializeField] private MicrogameBehaviour game; // the "game manager"
         [SerializeField] private GameObject readyPanel; // UI (Canvas) > Image
         [SerializeField] private GameObject playArea;
+        [SerializeField] private GameObject playUI;
         [SerializeField] private GameObject resultPanel; // UI (Canvas) > Image
         [SerializeField] private GameObject player;
         [SerializeField] private Text timerText; // TMP
