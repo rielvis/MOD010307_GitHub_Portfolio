@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MicrogameCourse.Microgames.MG3GameManager
   cam: {fileID: 1672124840}
-  timerDuration: 3
+  maxTimerDuration: 2
   targetPrefab: {fileID: 5358474789995962164, guid: 9340ad5a9b3f7424d9e9b5d436456495, type: 3}
 --- !u!1 &133367089
 GameObject:

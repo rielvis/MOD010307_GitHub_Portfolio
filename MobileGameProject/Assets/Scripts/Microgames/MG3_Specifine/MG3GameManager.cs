@@ -6,7 +6,7 @@ namespace MicrogameCourse.Microgames
     public class MG3GameManager : MicrogameBehaviour
     {
         [SerializeField] public Camera cam;
-        [SerializeField] private float timerDuration;
+        [SerializeField] private float maxTimerDuration;
         [SerializeField] private GameObject targetPrefab;
         private float targetSpawnTimer;
 
@@ -22,14 +22,14 @@ namespace MicrogameCourse.Microgames
         {
             base.Begin(session);
             SetPlayerState();
-            targetSpawnTimer = timerDuration / 2;
+            targetSpawnTimer = maxTimerDuration / 2;
         }
 
         void Update()
         {
             if (IsRunning == true)
             {
-                SpawnTargets();
+                SpawnTargets(1);
             }
         }
 
@@ -43,7 +43,7 @@ namespace MicrogameCourse.Microgames
             else { cam.backgroundColor = new Color(0, 0, 0, 255); }
         }
 
-        private void SpawnTargets()
+        private void SpawnTargets(int amount)
         {
             if (targetSpawnTimer > 0)
             {
@@ -51,8 +51,11 @@ namespace MicrogameCourse.Microgames
             }
             else if (targetSpawnTimer <= 0)
             {
-                Instantiate(targetPrefab, new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 3f), 0), Quaternion.identity);
-                targetSpawnTimer = timerDuration;
+                for (int i = 1; i <= amount; i++)
+                {
+                    Instantiate(targetPrefab, new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 3f), 0), Quaternion.identity);
+                }
+                targetSpawnTimer = maxTimerDuration - Random.Range(0f, maxTimerDuration);
             }
         }
     }
