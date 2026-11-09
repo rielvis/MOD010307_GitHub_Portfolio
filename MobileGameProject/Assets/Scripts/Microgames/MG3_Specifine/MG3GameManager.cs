@@ -22,7 +22,7 @@ namespace MicrogameCourse.Microgames
         {
             base.Begin(session);
             SetPlayerState();
-            targetSpawnTimer = 0;
+            targetSpawnTimer = timerDuration / 2;
         }
 
         void Update()
