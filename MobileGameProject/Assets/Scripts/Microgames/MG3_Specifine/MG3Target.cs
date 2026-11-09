@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -23,24 +22,17 @@ public class MG3Target : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        targetColor = sr.color;
         SetTargetAttributes();
         targetLifeTimer = lifeDuration;
+
+        GraphicsSettings.useScriptableRenderPipelineBatching = false; // This makes alpha channel changes show during runtime (f u Unity)
     }
 
     // Update is called once per frame
     void Update()
     {
-        // targetLifeTimer -= Time.deltaTime;
-        
-        // if (targetLifeTimer < (lifeDuration / 2))
-        // {
-        //     sr.color = new Color(targetColor.r, targetColor.g, targetColor.b, 127);
-        // }
-        //
-        // if (targetLifeTimer <= 0)
-        // {
-        //     Destroy(gameObject);
-        // }
+        RunLife();
     }
 
     private void SetTargetAttributes()
@@ -58,10 +50,31 @@ public class MG3Target : MonoBehaviour
         }
         else 
         {
-            sr.color = new Color(255, 255, 255, 255); 
+            sr.color = new Color(255, 255, 255, 255);
         }
 
         targetColor = sr.color;
+    }
+
+    private void RunLife()
+    {
+        if (targetLifeTimer > 0)
+        {
+            targetLifeTimer -= Time.deltaTime;
+            Debug.Log(targetLifeTimer);   
+        }
+        
+        if (targetLifeTimer < (lifeDuration / 2))
+        {
+            targetColor.a = 0.1f;
+            sr.color = targetColor;
+        }
+        
+        if (targetLifeTimer <= 0f)
+        {
+            Debug.Log("Target gone!");
+            Destroy(gameObject, 0f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D area)
