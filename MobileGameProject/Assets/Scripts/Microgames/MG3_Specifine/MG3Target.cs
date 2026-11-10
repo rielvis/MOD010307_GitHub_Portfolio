@@ -61,7 +61,7 @@ public class MG3Target : MonoBehaviour
         if (targetLifeTimer > 0)
         {
             targetLifeTimer -= Time.deltaTime;
-            Debug.Log(targetLifeTimer);   
+            //Debug.Log(targetLifeTimer);   
         }
         
         if (targetLifeTimer < (lifeDuration / 2))

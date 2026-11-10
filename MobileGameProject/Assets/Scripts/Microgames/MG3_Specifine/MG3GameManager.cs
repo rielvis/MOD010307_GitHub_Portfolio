@@ -1,3 +1,4 @@
+using System;
 using MicrogameCourse.Framework;
 using UnityEngine;
 
@@ -6,9 +7,11 @@ namespace MicrogameCourse.Microgames
     public class MG3GameManager : MicrogameBehaviour
     {
         [SerializeField] public Camera cam;
-        [SerializeField] private float maxTimerDuration;
+        [SerializeField] private float maxSpawnTimerDuration;
+        [SerializeField] private float maxPlayerStateChangeTimerDuration;
         [SerializeField] private GameObject targetPrefab;
         private float targetSpawnTimer;
+        public float playerStateChangeTimer;
 
         public enum TypeState
         {
@@ -22,7 +25,8 @@ namespace MicrogameCourse.Microgames
         {
             base.Begin(session);
             SetPlayerState();
-            targetSpawnTimer = maxTimerDuration / 2;
+            targetSpawnTimer = maxSpawnTimerDuration / 2;
+            playerStateChangeTimer = maxPlayerStateChangeTimerDuration;
         }
 
         void Update()
@@ -30,14 +34,39 @@ namespace MicrogameCourse.Microgames
             if (IsRunning == true)
             {
                 SpawnTargets(1);
+                CyclePlayerState();
             }
         }
 
         private void SetPlayerState()
         {
-            playerState = Random.Range(0, 2) == 0 ? TypeState.Red : TypeState.Green;
+            playerState = UnityEngine.Random.Range(0, 2) == 0 ? TypeState.Red : TypeState.Green;
             Debug.Log("Player state is " + playerState);
+            SetBackgroundColor();
+        }
 
+        private void CyclePlayerState()
+        {
+            playerStateChangeTimer -= Time.deltaTime;
+            Debug.Log(playerStateChangeTimer);
+
+            if (playerStateChangeTimer <= 0)
+            {
+                if (playerState == TypeState.Red)
+                {
+                    ChangePlayerState(TypeState.Green);
+                }
+                else if (playerState == TypeState.Green)
+                {
+                    ChangePlayerState(TypeState.Red);
+                }
+
+                playerStateChangeTimer = maxPlayerStateChangeTimerDuration;
+            }
+        }
+
+        private void SetBackgroundColor()
+        {
             if (playerState == TypeState.Red) { cam.backgroundColor = new Color(255, 0, 0, 255); }
             else if (playerState == TypeState.Green) { cam.backgroundColor = new Color(0, 255, 0, 255); }
             else { cam.backgroundColor = new Color(0, 0, 0, 255); }
@@ -53,10 +82,16 @@ namespace MicrogameCourse.Microgames
             {
                 for (int i = 1; i <= amount; i++)
                 {
-                    Instantiate(targetPrefab, new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 3f), 0), Quaternion.identity);
+                    Instantiate(targetPrefab, new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-4f, 3f), 0), Quaternion.identity);
                 }
-                targetSpawnTimer = maxTimerDuration - Random.Range(0f, maxTimerDuration);
+                targetSpawnTimer = maxSpawnTimerDuration - UnityEngine.Random.Range(0f, maxSpawnTimerDuration);
             }
+        }
+
+        private void ChangePlayerState(TypeState type)
+        {
+            playerState = type;
+            SetBackgroundColor();
         }
     }
 }
