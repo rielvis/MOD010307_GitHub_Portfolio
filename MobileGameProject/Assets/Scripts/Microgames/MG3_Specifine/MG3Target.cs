@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -10,7 +11,15 @@ public class MG3Target : MonoBehaviour
         Green
     }
 
+    private enum SpawnType
+    {
+        Left,
+        Right
+    }
+
     private TargetType targetType;
+    private SpawnType spawnType;
+    [SerializeField] private float targetMoveSpeed;
 
     private SpriteRenderer sr;
     private Color targetColor;
@@ -37,8 +46,8 @@ public class MG3Target : MonoBehaviour
 
     private void SetTargetAttributes()
     {
-        // Two possible states for target, tenery statement to randomly pick a state upon instantiation
-        targetType = UnityEngine.Random.Range(0, 2) == 0 ? TargetType.Red : TargetType.Green ;
+        // Two possible states for target type, tenery statement to randomly pick a state upon instantiation
+        targetType = UnityEngine.Random.Range(0, 2) == 0 ? TargetType.Red : TargetType.Green;
 
         if (targetType == TargetType.Red)
         { 
@@ -54,26 +63,58 @@ public class MG3Target : MonoBehaviour
         }
 
         targetColor = sr.color;
+
+        // Setting the spawn type, whether it spawns from the left or right of the screen
+        spawnType = UnityEngine.Random.Range(0, 2) == 0 ? SpawnType.Left : SpawnType.Right;
+
+        if (spawnType == SpawnType.Left)
+        {
+            transform.position = new Vector3(-4f, UnityEngine.Random.Range(-4f, 3f), 0);
+        }
+        else if (spawnType == SpawnType.Right)
+        {
+            transform.position = new Vector3(4f, UnityEngine.Random.Range(-4f, 3f), 0);
+        }
+        else
+        {
+            return;
+        }
     }
 
     private void RunLife()
     {
-        if (targetLifeTimer > 0)
-        {
-            targetLifeTimer -= Time.deltaTime;
-            //Debug.Log(targetLifeTimer);   
-        }
+        // If the targets spawn at random locations and fade away in place
+            // if (targetLifeTimer > 0)
+            // {
+            //     targetLifeTimer -= Time.deltaTime;
+            //     //Debug.Log(targetLifeTimer);   
+            // }
+            
+            // if (targetLifeTimer < (lifeDuration / 2))
+            // {
+            //     targetColor.a = 0.1f;
+            //     sr.color = targetColor;
+            // }
+            
+            // if (targetLifeTimer <= 0f)
+            // {
+            //     Debug.Log("Target gone!");
+            //     Destroy(gameObject, 0f);
+            // }
         
-        if (targetLifeTimer < (lifeDuration / 2))
+        // If the targets spawn off screen and move across the screen, destroying once they exit the screen
+        if (spawnType == SpawnType.Left)
         {
-            targetColor.a = 0.1f;
-            sr.color = targetColor;
+            transform.position = new Vector3(transform.position.x + (targetMoveSpeed * Time.deltaTime), transform.position.y, transform.position.z);
         }
-        
-        if (targetLifeTimer <= 0f)
+        else if (spawnType == SpawnType.Right)
         {
-            Debug.Log("Target gone!");
-            Destroy(gameObject, 0f);
+            transform.position = new Vector3(transform.position.x + (-targetMoveSpeed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x >= 5 || transform.position.x <= -5)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -81,7 +122,8 @@ public class MG3Target : MonoBehaviour
     {
         if (area.name == "Area")
         {
-            Destroy(gameObject);
+            // Destroy(gameObject); // not working?? object does not destroy when leaving the area
+            return;
         }
     }
 }

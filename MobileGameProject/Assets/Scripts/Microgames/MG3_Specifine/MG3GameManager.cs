@@ -1,15 +1,17 @@
 using System;
 using MicrogameCourse.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MicrogameCourse.Microgames
 {
     public class MG3GameManager : MicrogameBehaviour
     {
         [SerializeField] public Camera cam;
+        [SerializeField] public Text stateChangeTimerText;
+        [SerializeField] private GameObject targetPrefab;
         [SerializeField] private float maxSpawnTimerDuration;
         [SerializeField] private float maxPlayerStateChangeTimerDuration;
-        [SerializeField] private GameObject targetPrefab;
         private float targetSpawnTimer;
         public float playerStateChangeTimer;
 
@@ -33,7 +35,7 @@ namespace MicrogameCourse.Microgames
         {
             if (IsRunning == true)
             {
-                SpawnTargets(1);
+                TargetSpawnCycle(1);
                 CyclePlayerState();
             }
         }
@@ -48,9 +50,10 @@ namespace MicrogameCourse.Microgames
         private void CyclePlayerState()
         {
             playerStateChangeTimer -= Time.deltaTime;
+            stateChangeTimerText.text = $"State Change In: {playerStateChangeTimer:0.00}";
             Debug.Log(playerStateChangeTimer);
 
-            if (playerStateChangeTimer <= 0)
+            if (playerStateChangeTimer <= 1)
             {
                 if (playerState == TypeState.Red)
                 {
@@ -72,7 +75,7 @@ namespace MicrogameCourse.Microgames
             else { cam.backgroundColor = new Color(0, 0, 0, 255); }
         }
 
-        private void SpawnTargets(int amount)
+        private void TargetSpawnCycle(int amount)
         {
             if (targetSpawnTimer > 0)
             {
@@ -82,7 +85,7 @@ namespace MicrogameCourse.Microgames
             {
                 for (int i = 1; i <= amount; i++)
                 {
-                    Instantiate(targetPrefab, new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-4f, 3f), 0), Quaternion.identity);
+                    SpawnTarget();
                 }
                 targetSpawnTimer = maxSpawnTimerDuration - UnityEngine.Random.Range(0f, maxSpawnTimerDuration);
             }
@@ -92,6 +95,12 @@ namespace MicrogameCourse.Microgames
         {
             playerState = type;
             SetBackgroundColor();
+        }
+
+        private void SpawnTarget()
+        {
+            //Instantiate(targetPrefab, new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-4f, 3f), 0), Quaternion.identity);
+            Instantiate(targetPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
 }
