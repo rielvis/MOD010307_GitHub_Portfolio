@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2faf49decdfd40a109d74272c6020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MG3Target
+  targetType: 0
   targetMoveSpeed: 5
   lifeDuration: 3
 --- !u!61 &253301141270934028

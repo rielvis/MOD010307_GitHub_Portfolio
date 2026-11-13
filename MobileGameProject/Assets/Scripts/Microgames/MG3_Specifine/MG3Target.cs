@@ -17,7 +17,7 @@ public class MG3Target : MonoBehaviour
         Right
     }
 
-    private TargetType targetType;
+    public TargetType targetType;
     private SpawnType spawnType;
     [SerializeField] private float targetMoveSpeed;
 

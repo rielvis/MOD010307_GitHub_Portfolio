@@ -21,7 +21,7 @@ namespace MicrogameCourse.Microgames
             Green
         }
 
-        private TypeState playerState;
+        public TypeState playerState;
 
         public override void Begin(MicrogameSession session)
         {
@@ -51,7 +51,7 @@ namespace MicrogameCourse.Microgames
         {
             playerStateChangeTimer -= Time.deltaTime;
             stateChangeTimerText.text = $"State Change In: {playerStateChangeTimer:0.00}";
-            Debug.Log(playerStateChangeTimer);
+            //Debug.Log(playerStateChangeTimer);
 
             if (playerStateChangeTimer <= 1)
             {
