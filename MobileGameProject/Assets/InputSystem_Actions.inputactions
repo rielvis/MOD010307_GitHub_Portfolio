@@ -519,7 +519,7 @@
             ]
         },
         {
-            "name": "MG1_Player",
+            "name": "Game",
             "id": "f3399039-b439-4844-8f80-f0c1c1713218",
             "actions": [
                 {
@@ -530,6 +530,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Clicktap",
+                    "type": "PassThrough",
+                    "id": "d6bf7762-d49d-4f62-b29c-3b601b94bcce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Down",
@@ -559,7 +568,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Spawn",
+                    "name": "Debug",
                     "type": "Button",
                     "id": "a611d408-f8e3-4ec3-a947-bf20ed4affba",
                     "expectedControlType": "",
@@ -588,6 +597,50 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90460cf3-7d1e-4271-8f84-e19891f3d852",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Clicktap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0e5845b-1b9c-4fa5-820a-dec77b9b676c",
+                    "path": "<Pen>/tip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Clicktap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "081e7831-14e5-4291-aa08-a57584aa6536",
+                    "path": "<Touchscreen>/touch*/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Clicktap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "661ed36d-4c66-46ab-a700-ac8c21d5abe9",
+                    "path": "<XRController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Clicktap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -664,7 +717,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Spawn",
+                    "action": "Debug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -675,7 +728,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Spawn",
+                    "action": "Debug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

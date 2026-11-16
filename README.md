@@ -41,6 +41,7 @@ The repository history, branches and pull requests form part of the assessment e
 ## 1. Movement and Control
 
 **Game Title:** DuckDuck
+
 **Location:** [Documentation/Microgames/01-Movement-Control/README.md](Documentation/Microgames/01-Movement-Control/README.md)
 
 **Main Technical Focus:**  
@@ -48,9 +49,9 @@ Player movement, navigation or aiming using input, vectors, delta time and game 
 
 ### Primary student-authored scripts
 
-[GameController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/GameController.cs)
-[HunterController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/HunterController.cs)
-[PlayerController.cs](https://github.com/rielvis/MOD010307_GitHub_Portfolio/blob/main/MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/PlayerController.cs)
+[GameController.cs](MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/GameController.cs)
+[HunterController.cs](MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/HunterController.cs)
+[PlayerController.cs](MobileGameProject/Assets/Scripts/Microgames/MG1_DuckDuck/PlayerController.cs)
 
 ### Key pull requests
 
@@ -60,33 +61,39 @@ Player movement, navigation or aiming using input, vectors, delta time and game 
 
 ## 2. Physics and Interaction
 
-**Game title:**  
-**Location:** [Microgame documentation](Microgames/02-Physics-Interaction/README.md)
+**Game title:**  Rubitals
+
+**Location:** [Microgame documentation](Documentation/Microgames/02-Physics-Interaction/README.md)
 
 **Main technical focus:**  
 Physics-based gameplay using forces, velocity, gravity, collisions, triggers or related systems.
 
 ### Primary student-authored scripts
 
-_Add links to the scripts presented as evidence for this microgame._
+[GravityController.cs](MobileGameProject/Assets/Scripts/Microgames/MG2_Rubitals/GravityController.cs)
+[ShipController.cs](MobileGameProject/Assets/Scripts/Microgames/MG2_Rubitals/ShipController.cs)
+[MG2GameManager.cs](MobileGameProject/Assets/Scripts/Microgames/MG2_Rubitals/MG2GameManager.cs)
 
 ### Key pull requests
 
-_Add links to pull requests showing the development and refinement of this microgame._
+[#14 - MG2 Rubitals, core implementation](https://github.com/rielvis/MOD010307_GitHub_Portfolio/pull/14)
 
 ---
 
 ## 3. Timing, State and Logic
 
-**Game title:**  
-**Location:** [Microgame documentation](Microgames/03-Timing-State-Logic/README.md)
+**Game title:**  Specifine
+
+**Location:** [Microgame documentation](Documentation/Microgames/03-Timing-State-Logic/README.md)
 
 **Main technical focus:**  
 Timing, sequencing, changing game states, rules, success/failure conditions or reaction-based gameplay.
 
 ### Primary student-authored scripts
 
-_Add links to the scripts presented as evidence for this microgame._
+[MG2GameManager.cs](MobileGameProject/Assets/Scripts/Microgames/MG3_Specifine/MG3GameManager.cs)
+[MG3PlayerController.cs](MobileGameProject/Assets/Scripts/Microgames/MG3_Specifine/MG3PlayerController.cs)
+[MG3Target.cs](MobileGameProject/Assets/Scripts/Microgames/MG3_Specifine/MG3Target.cs)
 
 ### Key pull requests
 
@@ -96,8 +103,9 @@ _Add links to pull requests showing the development and refinement of this micro
 
 ## 4. Data, Collections and Algorithms
 
-**Game title:**  
-**Location:** [Microgame documentation](Microgames/04-Data-Collections-Algorithms/README.md)
+**Game title:**  U-Sort
+
+**Location:** [Microgame documentation](/Documentation/Microgames/04-Data-Collections-Algorithms/README.md)
 
 **Main technical focus:**  
 Arrays, lists or other collections together with searching, sorting or ordered data.
