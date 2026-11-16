@@ -1799,6 +1799,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   hunterPrefab: {fileID: 3755713017392008553, guid: b366a83db65b20647a5a04a2687fd96c, type: 3}
+  maxHunterSpawnTimerDuration: 3
+  hunterCount: 10
+  remainingHunterText: {fileID: 1320853716}
+  isPlayerHit: 0
 --- !u!1 &1147787976
 GameObject:
   m_ObjectHideFlags: 0
