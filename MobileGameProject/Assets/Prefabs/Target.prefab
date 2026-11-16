@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8269798025376523679}
   - component: {fileID: 87380354139087125}
   - component: {fileID: 5445481558176452560}
-  - component: {fileID: 253301141270934028}
+  - component: {fileID: 6792522847516511247}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d2faf49decdfd40a109d74272c6020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MG3Target
+  gameManager: {fileID: 0}
   targetType: 0
   targetMoveSpeed: 5
   lifeDuration: 3
---- !u!61 &253301141270934028
+--- !u!61 &6792522847516511247
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

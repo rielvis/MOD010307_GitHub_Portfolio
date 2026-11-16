@@ -2,9 +2,12 @@ using System;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.EventSystems;
+using MicrogameCourse.Microgames;
 
-public class MG3Target : MonoBehaviour
+public class MG3Target : MonoBehaviour, IPointerClickHandler
 {
+    public MG3GameManager gameManager;
     public enum TargetType
     {
         Red,
@@ -30,6 +33,7 @@ public class MG3Target : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<MG3GameManager>();
         sr = GetComponent<SpriteRenderer>();
         targetColor = sr.color;
         SetTargetAttributes();
@@ -44,6 +48,26 @@ public class MG3Target : MonoBehaviour
         RunLife();
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //Debug.Log("Target tapped!");
+
+        if (targetType == TargetType.Red && gameManager.playerState == MG3GameManager.TypeState.Red)
+        {
+            Destroy(gameObject);
+            Debug.Log("Target destroyed!");
+        }
+        else if (targetType == TargetType.Green && gameManager.playerState == MG3GameManager.TypeState.Green)
+        {
+            Destroy(gameObject);
+            Debug.Log("Target destroyed!");
+        }
+        else
+        {
+            Debug.Log("Wrong target!");
+        }
+    }
+
     private void SetTargetAttributes()
     {
         // Two possible states for target type, tenery statement to randomly pick a state upon instantiation
@@ -51,7 +75,7 @@ public class MG3Target : MonoBehaviour
 
         if (targetType == TargetType.Red)
         { 
-            sr.color = new Color(255, 0, 0, 255); 
+            sr.color = new Color(255, 0, 0, 255);
         }
         else if (targetType == TargetType.Green)
         {
