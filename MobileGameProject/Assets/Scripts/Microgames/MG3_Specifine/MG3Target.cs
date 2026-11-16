@@ -56,15 +56,18 @@ public class MG3Target : MonoBehaviour, IPointerClickHandler
         {
             Destroy(gameObject);
             Debug.Log("Target destroyed!");
+            gameManager.UpdateScore(true);
         }
         else if (targetType == TargetType.Green && gameManager.playerState == MG3GameManager.TypeState.Green)
         {
             Destroy(gameObject);
             Debug.Log("Target destroyed!");
+            gameManager.UpdateScore(true);
         }
         else
         {
             Debug.Log("Wrong target!");
+            gameManager.UpdateScore(false);
         }
     }
 

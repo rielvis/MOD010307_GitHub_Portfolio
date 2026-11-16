@@ -8,12 +8,17 @@ namespace MicrogameCourse.Microgames
     public class MG3GameManager : MicrogameBehaviour
     {
         [SerializeField] public Camera cam;
+        [SerializeField] public Text gameTimerText;
         [SerializeField] public Text stateChangeTimerText;
+        [SerializeField] public Text scoreText;
         [SerializeField] private GameObject targetPrefab;
         [SerializeField] private float maxSpawnTimerDuration;
         [SerializeField] private float maxPlayerStateChangeTimerDuration;
         private float targetSpawnTimer;
         public float playerStateChangeTimer;
+        public float gameTimer;
+        public int playerScore;
+        private int scoreToWin;
 
         public enum TypeState
         {
@@ -23,12 +28,19 @@ namespace MicrogameCourse.Microgames
 
         public TypeState playerState;
 
+        void Start()
+        {
+            targetSpawnTimer = maxSpawnTimerDuration / 2;
+            playerStateChangeTimer = maxPlayerStateChangeTimerDuration;
+            gameTimer = 30;
+            playerScore = 0;
+            scoreToWin = 5;
+        }
+
         public override void Begin(MicrogameSession session)
         {
             base.Begin(session);
             SetPlayerState();
-            targetSpawnTimer = maxSpawnTimerDuration / 2;
-            playerStateChangeTimer = maxPlayerStateChangeTimerDuration;
         }
 
         void Update()
@@ -37,6 +49,18 @@ namespace MicrogameCourse.Microgames
             {
                 TargetSpawnCycle(1);
                 CyclePlayerState();
+
+                gameTimer -= Time.deltaTime;
+                gameTimerText.text = $"TIME: {gameTimer:0.0}";
+            }
+
+            if (playerScore >= scoreToWin)
+            {
+                Win();
+            }
+            else if (gameTimer <= 0)
+            {
+                Lose();
             }
         }
 
@@ -50,7 +74,7 @@ namespace MicrogameCourse.Microgames
         private void CyclePlayerState()
         {
             playerStateChangeTimer -= Time.deltaTime;
-            stateChangeTimerText.text = $"State Change In: {playerStateChangeTimer:0.00}";
+            stateChangeTimerText.text = $"CHANGE IN: {playerStateChangeTimer:0.00}";
             //Debug.Log(playerStateChangeTimer);
 
             if (playerStateChangeTimer <= 1)
@@ -101,6 +125,20 @@ namespace MicrogameCourse.Microgames
         {
             //Instantiate(targetPrefab, new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-4f, 3f), 0), Quaternion.identity);
             Instantiate(targetPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+
+        public void UpdateScore(bool hitCorrectTarget)
+        {
+            if (hitCorrectTarget)
+            {
+                playerScore += 1;
+                scoreText.text = $"SCORE: {playerScore}";
+            }
+            else
+            {
+                playerScore -= 1;
+                scoreText.text = $"SCORE: {playerScore}";
+            }
         }
     }
 }
