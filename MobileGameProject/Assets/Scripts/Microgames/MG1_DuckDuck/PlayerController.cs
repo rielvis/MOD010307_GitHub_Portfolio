@@ -1,6 +1,6 @@
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
 
 namespace MicrogameCourse.Microgames
 {
@@ -23,13 +23,24 @@ namespace MicrogameCourse.Microgames
         [SerializeField] private float pLinearVelocityY;
         [SerializeField] private int playerDartForce;
 
+        [Header("Player Swipe Input")]
+        [SerializeField] private Vector2 startPos;
+        [SerializeField] private Vector2 endPos;
+        [SerializeField] private Vector2 swipeDirection;
+        private float swipeTimer;
+
+        // Up vector = (0, 1)
+        // Down vector = (0, -1)
+        // Left vector = (-1, 0)
+        // Right vector = (1, 0)
+
         private void Awake()
         {
             dartUp = InputSystem.actions.FindAction("Up");
             dartDown = InputSystem.actions.FindAction("Down");
             dartLeft = InputSystem.actions.FindAction("Left");
             dartRight = InputSystem.actions.FindAction("Right");
-            hunterSpawn = InputSystem.actions.FindAction("Spawn");
+            hunterSpawn = InputSystem.actions.FindAction("Debug");
         }
 
         void Start()
@@ -45,6 +56,7 @@ namespace MicrogameCourse.Microgames
         void Update()
         {
             SetPlayerSpeed();
+            SwipeInputHandler();
             DartPlayer();
 
             if (hunterSpawn.WasPressedThisFrame())
@@ -69,8 +81,11 @@ namespace MicrogameCourse.Microgames
 
         private void DartPlayer() // Should refactor this, comparatives with negatives and positives are difficult to comprehend...
         {
-            if (dartUp.WasPressedThisFrame())
+            /// swipeDirection holds a Vector2. Depending on the positivity/negativity of either X/Y will imply the direction swiped
+
+            if (dartUp.WasPressedThisFrame() || swipeDirection.y > 0.50)
             {
+
                 if (pRigidbody.linearVelocityY < 0) pLinearVelocityY = +playerDartForce;
                 else if (pRigidbody.linearVelocityY <= +maximumPlayerSpeed)
                 {
@@ -78,7 +93,7 @@ namespace MicrogameCourse.Microgames
                 }
 
             }
-            if (dartDown.WasPressedThisFrame())
+            if (dartDown.WasPressedThisFrame() || swipeDirection.y < -0.50)
             {
                 if (pRigidbody.linearVelocityY > 0) pLinearVelocityY = -playerDartForce;
                 else if (pRigidbody.linearVelocityY >= -maximumPlayerSpeed)
@@ -86,7 +101,7 @@ namespace MicrogameCourse.Microgames
                     pLinearVelocityY -= playerDartForce;
                 }
             }
-            if (dartLeft.WasPressedThisFrame())
+            if (dartLeft.WasPressedThisFrame() || swipeDirection.x < -0.50)
             {
                 if (pRigidbody.linearVelocityX > 0) pLinearVelocityX = -playerDartForce;
                 else if (pRigidbody.linearVelocityX >= -maximumPlayerSpeed)
@@ -94,13 +109,43 @@ namespace MicrogameCourse.Microgames
                     pLinearVelocityX -= playerDartForce;
                 }
             }
-            if (dartRight.WasPressedThisFrame())
+            if (dartRight.WasPressedThisFrame() || swipeDirection.x > 0.50)
             {
                 if (pRigidbody.linearVelocityX < 0) pLinearVelocityX = +playerDartForce;
                 else if (pRigidbody.linearVelocityX <= +maximumPlayerSpeed)
                 {
                     pLinearVelocityX += playerDartForce;
                 }
+            }
+        }
+
+        private void SwipeInputHandler()
+        {
+            if (swipeTimer > 0)
+            {
+                swipeTimer -= Time.deltaTime;
+            }
+
+            if (Pointer.current.press.wasPressedThisFrame)
+            {
+                startPos = Pointer.current.position.ReadValue();
+                swipeTimer = 1;
+                //Debug.Log(startPos);
+            }
+            else if (Pointer.current.press.wasReleasedThisFrame)
+            {
+                endPos = Pointer.current.position.ReadValue();
+
+                if (swipeTimer > 0.5 && swipeTimer < 0.9)
+                {
+                    swipeDirection = (endPos - startPos).normalized;
+                    Debug.Log(swipeDirection);
+                }
+                
+            }
+            else
+            {
+                swipeDirection = new Vector2(0, 0);
             }
         }
 
