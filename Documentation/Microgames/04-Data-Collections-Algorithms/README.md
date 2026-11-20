@@ -14,9 +14,11 @@ What does the player do?
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
-- 
-
-Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
+- Arrays/lists
+- Collections
+- Searching
+- Sorting
+- Data management
 
 ## Student-Authored Programming
 

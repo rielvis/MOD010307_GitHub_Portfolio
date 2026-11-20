@@ -1,4 +1,4 @@
-# Microgame: [Title]
+# Microgame: [Rubitals]
 
 ## Concept
 Briefly describe the game in one or two sentences.
@@ -14,9 +14,11 @@ What does the player do?
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
-- 
-
-Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
+- Rigidbody physics
+- Forces/velocity
+- Gravity
+- Collisions
+- Triggers
 
 ## Student-Authored Programming
 

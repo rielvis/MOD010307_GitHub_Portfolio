@@ -14,9 +14,10 @@ What does the player do?
 
 ## Main Programming Focus
 This microgame primarily demonstrates:
-- 
-
-Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
+- Timers
+- Sequencing
+- State changes
+- Win/loss conditions
 
 ## Student-Authored Programming
 
