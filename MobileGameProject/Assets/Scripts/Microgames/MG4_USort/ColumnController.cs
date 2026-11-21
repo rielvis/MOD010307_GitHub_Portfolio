@@ -26,11 +26,17 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (isDragging)
         {
-            if (touchedWorldPosition.y >= slot1.transform.position.y && touchedWorldPosition.y <= slot5.transform.position.y)
-            {
-                GetTouchedPosition();
-                ChangePosition();
-            }
+            GetTouchedPosition();
+            ChangePosition();
+        }
+
+        if (transform.position.x > slot5.transform.position.x)
+        {
+            transform.position = new Vector2(slot5.transform.position.x, transform.position.y);
+        }
+        else if (transform.position.x < slot1.transform.position.x)
+        {
+            transform.position = new Vector2(slot1.transform.position.x, transform.position.y);
         }
     }
 

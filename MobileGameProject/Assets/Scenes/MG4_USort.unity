@@ -781,6 +781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  slot1: {fileID: 82715924}
+  slot2: {fileID: 524749426}
+  slot3: {fileID: 302119874}
+  slot4: {fileID: 1935992203}
+  slot5: {fileID: 188882448}
   cam: {fileID: 0}
 --- !u!61 &414981211
 BoxCollider2D:
@@ -1197,6 +1202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  slot1: {fileID: 82715924}
+  slot2: {fileID: 524749426}
+  slot3: {fileID: 302119874}
+  slot4: {fileID: 1935992203}
+  slot5: {fileID: 188882448}
   cam: {fileID: 0}
 --- !u!61 &559240783
 BoxCollider2D:
@@ -2422,6 +2432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  slot1: {fileID: 82715924}
+  slot2: {fileID: 524749426}
+  slot3: {fileID: 302119874}
+  slot4: {fileID: 1935992203}
+  slot5: {fileID: 188882448}
   cam: {fileID: 0}
 --- !u!61 &1241801817
 BoxCollider2D:
@@ -3198,6 +3213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  slot1: {fileID: 82715924}
+  slot2: {fileID: 524749426}
+  slot3: {fileID: 302119874}
+  slot4: {fileID: 1935992203}
+  slot5: {fileID: 188882448}
   cam: {fileID: 0}
 --- !u!61 &1653467356
 BoxCollider2D:
@@ -3556,6 +3576,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  slot1: {fileID: 82715924}
+  slot2: {fileID: 524749426}
+  slot3: {fileID: 302119874}
+  slot4: {fileID: 1935992203}
+  slot5: {fileID: 188882448}
   cam: {fileID: 0}
 --- !u!61 &1767972021
 BoxCollider2D:
