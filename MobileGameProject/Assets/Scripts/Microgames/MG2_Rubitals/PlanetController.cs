@@ -18,20 +18,27 @@ public class PlanetController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public InputActionAsset InputActions;
     public InputAction debugButton;
     private Camera cam;
+    public ShipController ship;
 
     private Vector3 touchedScreenPosition;
     private bool isDragging;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        isDragging = true;
-        Debug.Log("Dragging true");
+        if (ship.hasLaunched == false)
+        {
+            isDragging = true;
+            Debug.Log("Dragging true");
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = false;
-        Debug.Log("Dragging false");
+        if (ship.hasLaunched == false)
+        {
+            isDragging = false;
+            Debug.Log("Dragging false");
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,6 +47,8 @@ public class PlanetController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         debugButton = InputSystem.actions.FindAction("Debug");
 
         cam = Camera.main;
+
+        ship = GameObject.Find("Ship").GetComponent<ShipController>();
     }
 
     // Update is called once per frame
