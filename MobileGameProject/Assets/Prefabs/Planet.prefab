@@ -284,3 +284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c337c04de02bfb44b9c38fd2adf31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetController
+  InputActions: {fileID: 0}
+  debugButton:
+    m_Name: Debug Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 97620876-da69-4ac2-8b36-952f200ca87f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
