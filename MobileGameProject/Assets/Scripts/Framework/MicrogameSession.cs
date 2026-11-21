@@ -26,7 +26,7 @@ namespace MicrogameCourse.Framework
             currentPhase = Phase.Ready;
             readyPanel.SetActive(true);
             pausePanel.SetActive(false);
-            pauseButton.SetActive(true);
+            pauseButton.SetActive(false);
             playArea.SetActive(false);
             playUI.SetActive(false);
             resultPanel.SetActive(false);
