@@ -1,12 +1,19 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 /// <summary>
 /// Be able to touch the planet objects and update their position according to where we touch on the screen.
+/// 
+/// Issues:
+/// >   Planet position is always set to touched position.
+///     This is an issue because you need to tap "Launch" UI button and tapping it
+///     causes planet position to go behind the button and out of the field.
+/// 
 /// </summary>
 
-public class PlanetController : MonoBehaviour
+public class PlanetController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public InputActionAsset InputActions;
     public InputAction debugButton;
@@ -14,6 +21,18 @@ public class PlanetController : MonoBehaviour
 
     private Vector3 touchedScreenPosition;
     private bool isDragging;
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isDragging = true;
+        Debug.Log("Dragging true");
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isDragging = false;
+        Debug.Log("Dragging false");
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,15 +52,6 @@ public class PlanetController : MonoBehaviour
         if (debugButton.WasPressedThisFrame())
         {
             // Do debug stuff
-        }
-
-        if (Pointer.current.press.wasPressedThisFrame)
-        {
-            isDragging = true;
-        }
-        else if (Pointer.current.press.wasReleasedThisFrame)
-        {
-            isDragging = false;
         }
 
         if (isDragging)
