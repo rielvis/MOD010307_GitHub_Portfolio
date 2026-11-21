@@ -5,8 +5,13 @@ namespace MicrogameCourse.Framework
     public abstract class MicrogameBehaviour : MonoBehaviour
     {
         // Microgame session
-        protected bool IsRunning {get; private set;}
+        public bool IsRunning;
         protected MicrogameSession Session {get; private set;}
+
+        void Start()
+        {
+            IsRunning = false;
+        }
 
         public virtual void Begin(MicrogameSession session)
         {
