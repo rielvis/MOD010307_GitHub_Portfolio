@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.EventSystems;

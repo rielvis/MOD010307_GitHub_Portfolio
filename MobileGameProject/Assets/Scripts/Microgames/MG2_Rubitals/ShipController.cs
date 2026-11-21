@@ -9,6 +9,7 @@ public class ShipController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 launchVector;
     private float launchSpeed;
+    public bool hasLaunched;
 
     [SerializeField] private Transform nose;
     [SerializeField] private Transform back;
@@ -22,6 +23,8 @@ public class ShipController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        hasLaunched = false;
+        
         // Randomise rotation within a certain range
         SetRandomRotation();
 
@@ -49,6 +52,7 @@ public class ShipController : MonoBehaviour
     public void LaunchShip()
     {
         rb.linearVelocity = launchVector * launchSpeed;
+        hasLaunched = true;
     }
 
     private void FaceVelocity() // taken from W3:B3 tutorial
