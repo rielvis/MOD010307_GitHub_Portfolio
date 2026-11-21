@@ -720,17 +720,6 @@
                     "action": "Debug",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fac1021c-6130-4b04-ba3f-a0aacaac1fa6",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Debug",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
