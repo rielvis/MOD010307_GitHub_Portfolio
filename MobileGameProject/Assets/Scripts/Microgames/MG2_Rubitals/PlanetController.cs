@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class PlanetController : MonoBehaviour
     private Camera cam;
 
     private Vector3 touchedScreenPosition;
+    private bool isDragging;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,10 +28,23 @@ public class PlanetController : MonoBehaviour
     {
         /// Check where we are touch the screen and get the world position from that.
         /// Update planet position to that world position derived.
-        
         //transform.position = touchedPosition;
 
         if (debugButton.WasPressedThisFrame())
+        {
+            // Do debug stuff
+        }
+
+        if (Pointer.current.press.wasPressedThisFrame)
+        {
+            isDragging = true;
+        }
+        else if (Pointer.current.press.wasReleasedThisFrame)
+        {
+            isDragging = false;
+        }
+
+        if (isDragging)
         {
             GetTouchedPosition();
             ChangePosition();
