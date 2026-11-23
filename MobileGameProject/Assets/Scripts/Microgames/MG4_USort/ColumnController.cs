@@ -14,9 +14,7 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     [Header("Slots")]
     private float snapPosX;
-    public enum Slot {s1, s2, s3, s4, s5}
-    public Slot slotPlace;
-    public Slot previousSlotPlace;
+    public GameObject slot;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +25,7 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         ownPosX = transform.position.x;
 
-        GetSnapPosition();
+        GetSlotSnapPosition();
     }
 
     // Update is called once per frame
@@ -37,7 +35,12 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             GetTouchedPosition();
             ChangePosition();
-        }   
+        }
+        else
+        {
+            GetSlotSnapPosition();
+            SetPosition();
+        }
     }
 
     public void OnPointerDown(PointerEventData data)
@@ -51,6 +54,11 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         SnapPosition();
     }
 
+    public void SetPosition()
+    {
+        
+    }
+
     private void GetTouchedPosition()
     {
         touchedScreenPosition = Pointer.current.position.ReadValue();
@@ -60,7 +68,7 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private void ChangePosition()
     {
         transform.position = new Vector3(touchedWorldPosition.x, transform.position.y, 0);
-        GetSnapPosition();
+        GetSlotSnapPosition();
     }
 
     private void SnapPosition()
@@ -68,7 +76,7 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         transform.position = new Vector2(snapPosX, transform.position.y);
     }
 
-    private void GetSnapPosition()
+    private void GetSlotSnapPosition()
     {
         ownPosX = transform.position.x;
         float s1s2MidPoint = (gameManager.slotsPosX[0] + gameManager.slotsPosX[1]) / 2;
@@ -79,34 +87,33 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (ownPosX < s1s2MidPoint) // If the column position is less than the mid point between Slot1 and Slot2
         {
             snapPosX = gameManager.slotsPosX[0];
-            SetSlotPosition(Slot.s1);
+            slot = gameManager.slots[0];
+            slot.GetComponent<SlotController>().column = gameObject;
         }
         else if (ownPosX > s1s2MidPoint && ownPosX < s2s3MidPoint)
         {
             snapPosX = gameManager.slotsPosX[1];
-            SetSlotPosition(Slot.s2);
+            slot = gameManager.slots[1];
+            slot.GetComponent<SlotController>().column = gameObject;
         }
         else if (ownPosX > s2s3MidPoint && ownPosX < s3s4MidPoint)
         {
             snapPosX = gameManager.slotsPosX[2];
-            SetSlotPosition(Slot.s3);
+            slot = gameManager.slots[2];
+            slot.GetComponent<SlotController>().column = gameObject;
         }
         else if (ownPosX > s3s4MidPoint && ownPosX < s4s5MidPoint)
         {
             snapPosX = gameManager.slotsPosX[3];
-            SetSlotPosition(Slot.s4);
+            slot = gameManager.slots[3];
+            slot.GetComponent<SlotController>().column = gameObject;
 
         }
         else if (ownPosX > s4s5MidPoint)
         {
             snapPosX = gameManager.slotsPosX[4];
-            SetSlotPosition(Slot.s5);
-            //gameManager.SwapColumns(gameObject);
+            slot = gameManager.slots[4];
+            slot.GetComponent<SlotController>().column = gameObject;
         }
-    }
-
-    private void SetSlotPosition(Slot slot)
-    {
-        slotPlace = slot;
     }
 }
