@@ -53,8 +53,9 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         touchedScreenPosition = Pointer.current.position.ReadValue();
         touchedWorldPosition = cam.ScreenToWorldPoint(touchedScreenPosition);
 
-        transform.position = new Vector3(touchedWorldPosition.x, transform.position.y, 0);
-        gameManager.ColumnSlotAssignment();
+        gameManager.emptySlot = slot; // Gets the current empty slot
+        transform.position = new Vector3(touchedWorldPosition.x, transform.position.y, 0); // moves to a new position
+        gameManager.ColumnSlotAssignment(gameObject); // checks if that position warrants a column-slot reassignment, and if so reassigns it, where then positioning is handled independently in each column script
     }
 
     private void SnapPosition()
