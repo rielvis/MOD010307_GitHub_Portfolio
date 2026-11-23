@@ -652,6 +652,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slotPlace: 0
+  previousSlotPlace: 0
 --- !u!61 &414981211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slotPlace: 0
+  previousSlotPlace: 0
 --- !u!61 &559240783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1221,7 +1223,7 @@ Transform:
   m_GameObject: {fileID: 629760168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.01776, y: -0.34687, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1239,16 +1241,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3983d2bc744c6e64a9127abfbf3263e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MG4GameManager
-  slot1: {fileID: 82715924}
-  s1posX: 0
-  slot2: {fileID: 524749426}
-  s2posX: 0
-  slot3: {fileID: 302119874}
-  s3posX: 0
-  slot4: {fileID: 1935992203}
-  s4posX: 0
-  slot5: {fileID: 188882448}
-  s5posX: 0
+  slots:
+  - {fileID: 82715924}
+  - {fileID: 524749426}
+  - {fileID: 302119874}
+  - {fileID: 1935992203}
+  - {fileID: 188882448}
+  slotsPosX:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &828432710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,6 +2067,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slotPlace: 0
+  previousSlotPlace: 0
 --- !u!61 &1241801817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2719,6 +2724,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slotPlace: 0
+  previousSlotPlace: 0
 --- !u!61 &1653467356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2988,6 +2994,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slotPlace: 0
+  previousSlotPlace: 0
 --- !u!61 &1767972021
 BoxCollider2D:
   m_ObjectHideFlags: 0
