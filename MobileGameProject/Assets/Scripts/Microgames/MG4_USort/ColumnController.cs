@@ -99,4 +99,9 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             slotPlace = Slot.s5;
         }
     }
+
+    private void SetSlotPosition()
+    {
+        
+    }
 }
