@@ -596,8 +596,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414981208}
   - component: {fileID: 414981209}
-  - component: {fileID: 414981210}
   - component: {fileID: 414981211}
+  - component: {fileID: 414981210}
   m_Layer: 0
   m_Name: Col3
   m_TagString: Untagged
@@ -694,6 +694,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
+  emptySlot: {fileID: 0}
+  otherColumn: {fileID: 0}
 --- !u!61 &414981211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1028,8 +1030,8 @@ GameObject:
   m_Component:
   - component: {fileID: 559240780}
   - component: {fileID: 559240781}
-  - component: {fileID: 559240782}
   - component: {fileID: 559240783}
+  - component: {fileID: 559240782}
   m_Layer: 0
   m_Name: Col5
   m_TagString: Untagged
@@ -1126,6 +1128,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
+  emptySlot: {fileID: 0}
+  otherColumn: {fileID: 0}
 --- !u!61 &559240783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1296,11 +1300,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MG4GameManager
   columns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1653467352}
+  - {fileID: 1767972017}
+  - {fileID: 414981207}
+  - {fileID: 1241801813}
+  - {fileID: 559240779}
   slots:
   - {fileID: 82715924}
   - {fileID: 524749426}
@@ -1313,6 +1317,10 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  s1s2MidPoint: 0
+  s2s3MidPoint: 0
+  s3s4MidPoint: 0
+  s4s5MidPoint: 0
 --- !u!1 &828432710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,8 +2037,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1241801814}
   - component: {fileID: 1241801815}
-  - component: {fileID: 1241801816}
   - component: {fileID: 1241801817}
+  - component: {fileID: 1241801816}
   m_Layer: 0
   m_Name: Col4
   m_TagString: Untagged
@@ -2127,6 +2135,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
+  emptySlot: {fileID: 0}
+  otherColumn: {fileID: 0}
 --- !u!61 &1241801817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2685,8 +2695,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1653467353}
   - component: {fileID: 1653467354}
-  - component: {fileID: 1653467355}
   - component: {fileID: 1653467356}
+  - component: {fileID: 1653467355}
   m_Layer: 0
   m_Name: Col1
   m_TagString: Untagged
@@ -2783,6 +2793,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
+  emptySlot: {fileID: 0}
+  otherColumn: {fileID: 0}
 --- !u!61 &1653467356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2954,8 +2966,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1767972018}
   - component: {fileID: 1767972019}
-  - component: {fileID: 1767972020}
   - component: {fileID: 1767972021}
+  - component: {fileID: 1767972020}
   m_Layer: 0
   m_Name: Col2
   m_TagString: Untagged
@@ -3052,6 +3064,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
+  emptySlot: {fileID: 0}
+  otherColumn: {fileID: 0}
 --- !u!61 &1767972021
 BoxCollider2D:
   m_ObjectHideFlags: 0
