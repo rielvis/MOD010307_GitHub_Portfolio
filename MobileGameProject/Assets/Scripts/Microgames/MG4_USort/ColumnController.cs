@@ -35,11 +35,11 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             GetTouchedPosition();
             ChangePosition();
+            GetSlotSnapPosition();
         }
         else
         {
-            GetSlotSnapPosition();
-            SetPosition();
+            
         }
     }
 
@@ -54,11 +54,6 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         SnapPosition();
     }
 
-    public void SetPosition()
-    {
-        
-    }
-
     private void GetTouchedPosition()
     {
         touchedScreenPosition = Pointer.current.position.ReadValue();
@@ -68,12 +63,6 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private void ChangePosition()
     {
         transform.position = new Vector3(touchedWorldPosition.x, transform.position.y, 0);
-        GetSlotSnapPosition();
-    }
-
-    private void SnapPosition()
-    {
-        transform.position = new Vector2(snapPosX, transform.position.y);
     }
 
     private void GetSlotSnapPosition()
@@ -115,5 +104,10 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             slot = gameManager.slots[4];
             slot.GetComponent<SlotController>().column = gameObject;
         }
+    }
+
+    private void SnapPosition()
+    {
+        transform.position = new Vector2(snapPosX, transform.position.y);
     }
 }
