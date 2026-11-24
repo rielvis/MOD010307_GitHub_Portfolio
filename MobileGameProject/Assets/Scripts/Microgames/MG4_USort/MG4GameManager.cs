@@ -1,6 +1,5 @@
+using System;
 using MicrogameCourse.Framework;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MicrogameCourse.Microgames
@@ -17,6 +16,8 @@ namespace MicrogameCourse.Microgames
         public float slot3_Slot4_Midpoint;
         public float slot4_Slot5_Midpoint;
         public GameObject emptySlot;
+        [Header("State of Data")]
+        [SerializeField] private bool columnsInOrder;
 
         void Start()
         {
@@ -44,7 +45,7 @@ namespace MicrogameCourse.Microgames
             {
                 float columnPosX = columns[i].transform.position.x;
 
-                if (columnPosX < slot1_Slot2_Midpoint)
+                if (columnPosX < slot1_Slot2_Midpoint) // 5 of these sections with incremental conditions, could do a for loop to check this?
                 {
                     columns[i].GetComponent<ColumnController>().slot = slots[0].gameObject;
                     slots[0].GetComponent<SlotController>().column = columns[i].gameObject;
@@ -78,11 +79,19 @@ namespace MicrogameCourse.Microgames
             // Swap references when one column overrides another in a given slot
             // Column positioning is handled by their controllers according to their slot reference, so we just need to handle the references here
 
+            // Called by whichever column is being dragged
+            // Before calling, the dragged column assigns it's current slot to the emptySlot variable and moves according to drag input
+            // Upon calling, it gets the position of the currently dragged column
+            //  Checks if the column is in a specific slot area
+            //      Checks whether the slot in the area has a column assigned that isn't the dragged column
+            //          If so, it moves the other column and the dragged column's emptySlot to each other...
+            //          ...then assigns the dragged column to the specific area slot.
+
             float columnPosX = draggedColumn.transform.position.x;
 
             if (columnPosX < slot1_Slot2_Midpoint)
             {
-                if (slots[0].GetComponent<SlotController>().column != draggedColumn)
+                if (slots[0].GetComponent<SlotController>().column != draggedColumn) 
                 {
                     slots[0].GetComponent<SlotController>().column.GetComponent<ColumnController>().slot = emptySlot.gameObject;
                     emptySlot.GetComponent<SlotController>().column = slots[0].GetComponent<SlotController>().column;
@@ -90,7 +99,7 @@ namespace MicrogameCourse.Microgames
                 draggedColumn.GetComponent<ColumnController>().slot = slots[0].gameObject;
                 slots[0].GetComponent<SlotController>().column = draggedColumn.gameObject;
             }
-            else if (columnPosX > slot1_Slot2_Midpoint && columnPosX < slot2_Slot3_Midpoint)
+            else if (columnPosX > slot1_Slot2_Midpoint && columnPosX < slot2_Slot3_Midpoint) // repeats for each slot area, could turn this into a loop?
             {
                 if (slots[1].GetComponent<SlotController>().column != draggedColumn)
                 {
@@ -129,6 +138,25 @@ namespace MicrogameCourse.Microgames
                 }
                 draggedColumn.GetComponent<ColumnController>().slot = slots[4].gameObject;
                 slots[4].GetComponent<SlotController>().column = draggedColumn.gameObject;
+            }
+        }
+
+        public void CheckColumnOrder()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                SlotController currentSlot = slots[i].GetComponent<SlotController>();
+                ColumnController currentSlotColumn = currentSlot.column.GetComponent<ColumnController>();
+                
+                if (currentSlotColumn.dataValue == currentSlot.dataValue)
+                {
+                    columnsInOrder = true;
+                }
+                else
+                {
+                    columnsInOrder = false;
+                    break;
+                }
             }
         }
     }
