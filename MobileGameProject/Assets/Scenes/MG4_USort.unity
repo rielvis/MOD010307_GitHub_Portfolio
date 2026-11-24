@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotController
   column: {fileID: 0}
+  dataValue: 0
 --- !u!1 &85727161
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotController
   column: {fileID: 0}
+  dataValue: 0
 --- !u!1 &260181219
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotController
   column: {fileID: 0}
+  dataValue: 0
 --- !u!1 &338327911
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,11 +694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  dataValue: 0
+  isDragging: 0
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
-  emptySlot: {fileID: 0}
-  otherColumn: {fileID: 0}
 --- !u!61 &414981211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -866,6 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotController
   column: {fileID: 0}
+  dataValue: 0
 --- !u!1 &537819140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,11 +1129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  dataValue: 0
+  isDragging: 0
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
-  emptySlot: {fileID: 0}
-  otherColumn: {fileID: 0}
 --- !u!61 &559240783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1299,6 +1303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3983d2bc744c6e64a9127abfbf3263e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MG4GameManager
+  score: 0
+  playAreaSprite: {fileID: 1358090433}
+  scoreFeedbackTimer: 0
   columns:
   - {fileID: 1653467352}
   - {fileID: 1767972017}
@@ -1317,10 +1324,12 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  s1s2MidPoint: 0
-  s2s3MidPoint: 0
-  s3s4MidPoint: 0
-  s4s5MidPoint: 0
+  slot1_Slot2_Midpoint: 0
+  slot2_Slot3_Midpoint: 0
+  slot3_Slot4_Midpoint: 0
+  slot4_Slot5_Midpoint: 0
+  emptySlot: {fileID: 0}
+  columnsInOrder: 0
 --- !u!1 &828432710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,11 +2141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  dataValue: 0
+  isDragging: 0
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
-  emptySlot: {fileID: 0}
-  otherColumn: {fileID: 0}
 --- !u!61 &1241801817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2790,11 +2799,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  dataValue: 0
+  isDragging: 0
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
-  emptySlot: {fileID: 0}
-  otherColumn: {fileID: 0}
 --- !u!61 &1653467356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3061,11 +3070,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bd02bfbb8082548a925f693c1f8838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColumnController
+  dataValue: 0
+  isDragging: 0
   cam: {fileID: 0}
   gameManager: {fileID: 0}
   slot: {fileID: 0}
-  emptySlot: {fileID: 0}
-  otherColumn: {fileID: 0}
 --- !u!61 &1767972021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3290,6 +3299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotController
   column: {fileID: 0}
+  dataValue: 0
 --- !u!1 &2088821708
 GameObject:
   m_ObjectHideFlags: 0

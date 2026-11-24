@@ -6,6 +6,9 @@ namespace MicrogameCourse.Microgames
 {
     public class MG4GameManager : MicrogameBehaviour
     {
+        public int score;
+        public SpriteRenderer playAreaSprite;
+        [SerializeField] private float scoreFeedbackTimer;
         [SerializeField] public GameObject[] columns = new GameObject[5];
         [SerializeField] public GameObject[] slots = new GameObject[5];
         [SerializeField] public float[] slotsPosX = new float[5];
@@ -21,6 +24,8 @@ namespace MicrogameCourse.Microgames
 
         void Start()
         {
+            score = 0;
+
             for (int i = 0; i < 5; i++)
             {
                 slotsPosX[i] = slots[i].transform.position.x;
@@ -36,7 +41,15 @@ namespace MicrogameCourse.Microgames
 
         void Update()
         {
-            
+            if (scoreFeedbackTimer > 0)
+            {
+                playAreaSprite.color = new Color(0f, 1f, 0f);
+                scoreFeedbackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                playAreaSprite.color = new Color(0f, 0f, 0f);
+            }
         }
 
         private void InitialColumnSlotAssignment()
@@ -158,6 +171,22 @@ namespace MicrogameCourse.Microgames
                     break;
                 }
             }
+
+            if (columnsInOrder == true)
+            {
+                Score();
+            }
+        }
+
+        private void Score()
+        {
+            scoreFeedbackTimer = 0.5f;
+            score += 1;
+        }
+
+        private void RandomiseColumnOrder()
+        {
+            
         }
     }
 }
