@@ -1,4 +1,3 @@
-using System;
 using MicrogameCourse.Framework;
 using UnityEngine;
 
@@ -8,10 +7,11 @@ namespace MicrogameCourse.Microgames
     {
         public int score;
         public SpriteRenderer playAreaSprite;
-        [SerializeField] public float scoreFeedbackTimer;
-        [SerializeField] public GameObject[] columns = new GameObject[5];
-        [SerializeField] public GameObject[] slots = new GameObject[5];
-        [SerializeField] public float[] slotsPosX = new float[5];
+        public float scoreFeedbackTimer;
+        public GameObject[] columns = new GameObject[5];
+        public GameObject[] slots = new GameObject[5];
+        public int[] dataValues = new int[5];
+        public float[] slotsPosX = new float[5];
 
         [Header("Slots")]
         public float slot1_Slot2_Midpoint;
@@ -19,8 +19,10 @@ namespace MicrogameCourse.Microgames
         public float slot3_Slot4_Midpoint;
         public float slot4_Slot5_Midpoint;
         public GameObject emptySlot;
+
         [Header("State of Data")]
         [SerializeField] private bool columnsInOrder;
+        private bool columnsHaveBeenReset;
 
         void Start()
         {
@@ -29,6 +31,7 @@ namespace MicrogameCourse.Microgames
             for (int i = 0; i < 5; i++)
             {
                 slotsPosX[i] = slots[i].transform.position.x;
+                dataValues[i] = i;
             }
 
             slot1_Slot2_Midpoint = (slotsPosX[0] + slotsPosX[1]) / 2;
@@ -43,13 +46,12 @@ namespace MicrogameCourse.Microgames
         {
             if (scoreFeedbackTimer > 0)
             {
-                
                 playAreaSprite.color = new Color(0f, 1f, 0f);
                 scoreFeedbackTimer -= Time.deltaTime;
             }
             else
             {
-                playAreaSprite.color = new Color(0f, 0f, 0f);
+                ResetSort();
             }
         }
 
@@ -183,11 +185,48 @@ namespace MicrogameCourse.Microgames
         {
             scoreFeedbackTimer = 0.5f;
             score += 1;
+            columnsHaveBeenReset = false;
         }
 
         private void RandomiseColumnOrder()
+        {            
+            for (int i = 0; i < 5; i++) // Set all slot and column references to null
+            {
+                slots[i].GetComponent<SlotController>().column = null;
+                columns[i].GetComponent<ColumnController>().slot = null;
+            }
+
+            Shuffle(dataValues);
+
+            for (int i = 0; i < 5; i++) // For each slot...
+            {
+                int j = dataValues[i];
+
+                slots[i].GetComponent<SlotController>().column = columns[j].gameObject;
+                columns[i].GetComponent<ColumnController>().slot = slots[j].gameObject;
+            }
+
+            CheckColumnOrder();
+        }
+
+        private void ResetSort()
         {
-            
+            playAreaSprite.color = new Color(0f, 0f, 0f);
+
+            if (!columnsHaveBeenReset)
+            {
+                RandomiseColumnOrder();
+                columnsHaveBeenReset = true;
+            }
+        }
+
+        public static void Shuffle<T>(T[] array)
+        {
+            for (int i = array.Length - 1; i > 0; i--)
+            {
+                int j = Random.Range(0, i + 1);
+                (array[i], array[j]) = (array[j], array[i]);
+            }
         }
     }
 }
