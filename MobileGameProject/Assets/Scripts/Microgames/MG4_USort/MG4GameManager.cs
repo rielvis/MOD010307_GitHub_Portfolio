@@ -1,11 +1,13 @@
 using MicrogameCourse.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MicrogameCourse.Microgames
 {
     public class MG4GameManager : MicrogameBehaviour
     {
         public int score;
+        public Text scoreText;
         public SpriteRenderer playAreaSprite;
         public float scoreFeedbackTimer;
         public GameObject[] columns = new GameObject[5];
@@ -28,6 +30,7 @@ namespace MicrogameCourse.Microgames
         {
             score = 0;
             emptySlot = null;
+            UpdateUI();
 
             for (int i = 0; i < 5; i++)
             {
@@ -163,6 +166,7 @@ namespace MicrogameCourse.Microgames
         {
             scoreFeedbackTimer = 0.5f;
             score += 1;
+            UpdateUI();
             columnsHaveBeenReset = false;
         }
 
@@ -206,6 +210,11 @@ namespace MicrogameCourse.Microgames
                 int j = Random.Range(0, i + 1);
                 (array[i], array[j]) = (array[j], array[i]);
             }
+        }
+
+        private void UpdateUI()
+        {
+            scoreText.text = $"SCORE: {score}";
         }
     }
 }
