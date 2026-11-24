@@ -47,7 +47,10 @@ public class ColumnController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void OnPointerDown(PointerEventData data)
     {
-        isDragging = true;
+        if (gameManager.scoreFeedbackTimer <= 0)
+        {
+            isDragging = true;
+        }
     }
 
     public void OnPointerUp(PointerEventData data)

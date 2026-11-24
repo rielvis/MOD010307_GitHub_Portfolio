@@ -8,7 +8,7 @@ namespace MicrogameCourse.Microgames
     {
         public int score;
         public SpriteRenderer playAreaSprite;
-        [SerializeField] private float scoreFeedbackTimer;
+        [SerializeField] public float scoreFeedbackTimer;
         [SerializeField] public GameObject[] columns = new GameObject[5];
         [SerializeField] public GameObject[] slots = new GameObject[5];
         [SerializeField] public float[] slotsPosX = new float[5];
@@ -43,6 +43,7 @@ namespace MicrogameCourse.Microgames
         {
             if (scoreFeedbackTimer > 0)
             {
+                
                 playAreaSprite.color = new Color(0f, 1f, 0f);
                 scoreFeedbackTimer -= Time.deltaTime;
             }
