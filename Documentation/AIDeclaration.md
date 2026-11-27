@@ -131,6 +131,9 @@
     }
     ```
 
+#### Q: (Uploading GameController.cs, PlayerController.cs, HunterController.cs) Please identify programming focuses and technical areas demonstrated in these Unity C# scripts. Examples might include movement, vectors, delta time, physics, collisions, timing, Boolean logic, collections, searching or sorting.
+- *Identified 14 programming areas, some then listed as additional focuses in [01-Movement-Control.md](Documentation\Microgames\01-Movement-Control).*
+
 ## MG2: Rubitals
 #### Q: Tell me about impulses and/or signals in Unity C#
 - *Told me about cinemachine impulses, Unity signals/events, C# signal scripting, Unity timeline signals, and some third-party signal architectures. Some generic code examples were generated to demonstrate how they would be implemented.*
