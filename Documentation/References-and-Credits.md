@@ -12,6 +12,10 @@ Use the referencing approach specified by ARU.
 3. 
 
 ## Engine Documentation
+EventSystems IPointerHandlers in Unity Docs
+
+https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/random/range
+
 1. 
 2. 
 3. 
@@ -32,3 +36,8 @@ Use the referencing approach specified by ARU.
 
 ## Other Credits
 Include anything else that contributed materially to the submitted work.
+- https://dotnetfullstackdev.substack.com/p/c-most-used-five-sorting-algorithms-24-04-08
+- https://www.geeksforgeeks.org/dsa/linear-search/
+- https://www.geeksforgeeks.org/c-sharp/dictionary-in-c-sharp/
+- https://www.w3schools.com/cs/cs_while_loop.php
+- https://www.dotnetperls.com/shuffle
